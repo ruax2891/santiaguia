@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+#from django.http import HttpResponse
 
 from django.views.generic import TemplateView
 
@@ -29,5 +30,6 @@ urlpatterns = [
     path("puntosinteres/", TemplateView.as_view(template_name="puntosinteres.html"), name="puntosinteres"),
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
     path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"),
+    #path("acercade/", HttpResponse("Hola"), name="acerca")
     #path("mapa/", include("mapa.urls")),
 ]
