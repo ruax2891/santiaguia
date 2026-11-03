@@ -33,8 +33,9 @@ urlpatterns = [
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
     path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"),
 
-    path('wiki/', include('wiki.urls')),
-    path('notifications/', include('django_nyt.urls'))
+    path('notifications/', include('django_nyt.urls')),
+    path('wiki/', include('wiki.urls'), name='wiki'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
