@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/estilos1.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
+    <title>Santiaguía</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navprincipal">
+            <h2>SANTIAGUÍA</h2>
+            <ul class="nav1_list">
+                <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesion</a></li>
+                <li class="nav1_list_item"><a href="{% url 'inicio' %}" class="nav_links">Inicio</a></li>
+                <li class="nav1_list_item"><a href="{% url 'puntosinteres' %}" class="nav_links">Puntos Interes</a></li>
+                <li class="nav1_list_item"><a href="{% url 'riesgozonas' %}" class="nav_links">Zonas</a></li>
+                <li class="nav1_list_item"><a href="" class="nav_links">Comunidad</a></li>
+                <li class="nav1_list_item"><a href="" class="nav_links">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="cajaimagen">
+        <div class="caja_titulo">
+            <h1>Santiaguía</h1>
+        </div>
+        <div class="caja_subtitulo">
+            <p>“Una guía para que los estudiantes foraneos aprendan a moverse por Santiago”</p>
+        </div>
+    </div>
+    <div class="cajaopciones">
+        <div class="opciones opcion1">
+            <div class="imagenop">
+            </div>
+            <div class="caja_titulo_op"> 
+                <h2>Mapa de riesgo</h2>
+                <p>Busca que tan segura es la zona donde vas</p>
+                <a href="{% url 'riesgozonas' %}">  
+                <button class="btn-ver-mapa">Ver mapa</button>
+                </a>
+            </div>
+        </div>
+        <div class="opciones opcion2">
+            <div class="imagenop">
+            </div>
+            <div class="caja_titulo_op">
+                <h2>Transporte público</h2>
+                <p>Conoce como moverte por la ciudad</p>
+                <a href="{% url 'transporte' %}"
+                <button class="btn-ver-mapa">Ver transporte</button>
+                </a>
+            </div>
+        </div>
+        <div class="opciones opcion3">
+            <div class="imagenop">
+            </div>
+            <div class="caja_titulo_op"> 
+                <h2>Sistema colaboración</h2>
+                <a>
+                <button class="btn-ver-mapa boton3">Ver recursos</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer><img src="safeimagekit-LOGO SANTIAGUÍA.png"></footer>
+</body>
+</html>
