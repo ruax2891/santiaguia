@@ -1,5 +1,5 @@
 """
-URL configuration for santiaguia project.
+URL configuration for config project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.1/topics/http/urls/
@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from django.views.generic import TemplateView
+from mapa import views
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='home'),
@@ -29,4 +30,5 @@ urlpatterns = [
     path("puntosinteres/", TemplateView.as_view(template_name="puntosinteres.html"), name="puntosinteres"),
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
     path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"),
+    path("mapa/", include("mapa.urls")),
 ]
