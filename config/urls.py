@@ -19,6 +19,8 @@ from django.urls import path, include
 #from django.http import HttpResponse
 
 from django.views.generic import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #path('', TemplateView.as_view(template_name='index.html'), name='home'),
@@ -30,5 +32,9 @@ urlpatterns = [
     path("puntosinteres/", TemplateView.as_view(template_name="puntosinteres.html"), name="puntosinteres"),
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
     path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"),
-    path('docs/', include('wiki.urls'), name='docs')
+
+    path('wiki/', include('wiki.urls')),
+    path('notifications/', include('django_nyt.urls'))
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

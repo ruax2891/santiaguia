@@ -28,6 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 # SITE ID -- wiki
 SITE_ID = 1
+# WIKI SETTINGS
+WIKI_ACCOUNT_HANDLING = True
+WIKI_ACCOUNT_SIGNUP_ALLOWED = True
+from django.urls import reverse_lazy
+LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
 
 # Application definition
 
@@ -133,7 +138,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
-
 
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
