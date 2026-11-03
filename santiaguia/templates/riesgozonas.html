@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="estilospagzonas.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../PAGINA PRINCIPAL/safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
+    <title>Santiaguía</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="navprincipal">
+            <h2>SANTIAGUÍA</h2>
+            <ul class="nav1_list">
+                <li class="nav1_list_item"><a href="../PAGINA PRINCIPAL/Pantalla1.html" class="nav_links">Inicio</a></li>
+                <li class="nav1_list_item"><a href="../Mapa de riesgo por zona/index.html" class="nav_links">Explorar</a></li>
+                <li class="nav1_list_item"><a href="" class="nav_links">Comunidad</a></li>
+                <li class="nav1_list_item"><a href="" class="nav_links">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 class="titulo">Mapa de riesgo por zona</h1>
+    <div class="contenedor">
+        <div class="caja_izq">
+            <div class="indice_izq">
+                <h2>Buscar y filtrar</h2>
+            </div>
+            <div class="selecciones">
+                <h2 class="index">Comuna</h2>
+                <select class="selector_comuna" name="comuna">
+                    <option value="" disabled selected>Seleccionar comuna</option>
+                    <option value="Santiago">Santiago</option>
+                </select>
+                <h2 class="index">Horario</h2>
+                <select class="selector_horario" name="comuna">
+                    <option value="" disabled selected>Seleccionar Horario</option>
+                    <option value="Santiago">Santiago</option>
+                </select>
+                <h2 class="index">Nivel de riesgo</h2>
+                <select class="selector_riesgo" name="comuna">
+                    <option value="Todos">Todos los niveles</option>
+                    <option value="Santiago">Santiago</option>
+                </select>
+            </div>
+        </div>
+        <div class="caja_medio">
+            <div class="mapa">
+
+            </div>
+        </div> 
+        <div class="caja_der">
+            <div class="indice_der">
+                <h2>Detalles de la zona seleccionada</h2>
+                <div class="detail zona_define">
+                    <p>Zona: Zona 2</p>
+                    <p><span>Nivel de riesgo: <span class="palabra-destacada">Precaución</span></span></p>
+                </div>
+                <div class="detail zona_encontrar">
+                    <h3>Consejos para esta zona:</h3>
+                    <p>Evitar caminar solo de noche</p>
+                    <p>Prefiere calles principales e iluminadas</p>
+                    <p>Mantiene tus pertenencias seguras</p>
+                </div>
+                <div class="detail zona_visitar">
+                    <h3>Porque es peligrosa esta zona?</h3>
+                    <p>Porque en las ultimas 2 semanas han habido 1500 robos y 10 homicidios</p>
+                    <p>Fuente: <a href="">link</a></p>
+                </div>
+            </div>
+            </div>
+    </div>    
+</body>
+</html>
