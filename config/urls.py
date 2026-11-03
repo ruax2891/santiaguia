@@ -30,6 +30,5 @@ urlpatterns = [
     path("puntosinteres/", TemplateView.as_view(template_name="puntosinteres.html"), name="puntosinteres"),
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
     path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"),
-    #path("acercade/", HttpResponse("Hola"), name="acerca")
-    #path("mapa/", include("mapa.urls")),
+    path('docs/', include('wiki.urls'), name='docs')
 ]
