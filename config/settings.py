@@ -33,6 +33,7 @@ WIKI_ACCOUNT_HANDLING = True
 WIKI_ACCOUNT_SIGNUP_ALLOWED = True
 from django.urls import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
+WIKI_CHECK_SLUG_URL_AVAILABLE = False
 
 # Application definition
 
