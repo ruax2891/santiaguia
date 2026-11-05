@@ -25,6 +25,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('', include('maps.urls')),
 
     path("", TemplateView.as_view(template_name="index.html"), name="inicio"),
     path("puntosinteres/", TemplateView.as_view(template_name="puntosinteres.html"), name="puntosinteres"),
