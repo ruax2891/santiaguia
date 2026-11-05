@@ -1,0 +1,62 @@
+<div id="map"></div>
+
+{{ places|json_script:"places-data" }}
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+crossorigin=""></script>
+
+<script>
+    function defaultPin(scale = 1, color = "") {
+    return new L.Icon.Default({
+        iconSize:      [Math.round(25 * scale), Math.round(41 * scale)],
+        iconAnchor:    [Math.round(12 * scale), Math.round(41 * scale)],
+        popupAnchor:   [Math.round(1 * scale),  Math.round(-34 * scale)],
+        tooltipAnchor: [Math.round(16 * scale), Math.round(-28 * scale)],
+        shadowSize:    [Math.round(41 * scale), Math.round(41 * scale)],
+        className:     color ? `pin-${color}` : "",
+    });
+    }
+
+    const map = L.map("map").setView([-33.44464250806337, -70.65612825784866], 12);
+
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 15,
+        referrerPolicy: "strict-origin-when-cross-origin",
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Put the test handler right here, before anything that parses data
+    map.on("click", e => {
+        console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
+    });
+
+    const places = JSON.parse(document.getElementById("places-data").textContent);
+    places.forEach(p => {
+        newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
+
+        newMarker.on("click", e => {
+            document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
+            document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
+            document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
+
+            textoFinalRelevantes = ""
+            console.log(p, p.custom_relevantes)
+
+            for (const textoDeRelevante of p.custom_relevantes) {
+                console.log(textoDeRelevante)
+                textoFinalRelevantes += "<p>" + textoDeRelevante + "</p>"
+            }
+
+            document.getElementById("ListaElementosZona").innerHTML = textoFinalRelevantes
+
+            textoFinalRazonVisita = ""
+            for (const textoDeRazonVisita of p.custom_razonvisita) {
+                console.log(textoDeRazonVisita)
+                textoFinalRazonVisita += "<p>" + textoDeRazonVisita + "</p>"
+            }
+
+            document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
+        });
+    });
+</script>

@@ -11,8 +11,19 @@
 </head>
 
 <body>
-    {% include 'cabeceraprincipal.html' %}
-
+    <header class="header">
+        <nav class="navprincipal">
+            <h2>SANTIAGUÍA</h2>
+            <ul class="nav1_list">
+                <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesion</a></li>
+                <li class="nav1_list_item"><a href="{% url 'inicio' %}" class="nav_links">Inicio</a></li>
+                <li class="nav1_list_item"><a href="{% url 'puntosinteres' %}" class="nav_links">Puntos Interes</a></li>
+                <li class="nav1_list_item"><a href="{% url 'riesgozonas' %}" class="nav_links">Zonas</a></li>
+                <li class="nav1_list_item"><a href="" class="nav_links">Comunidad</a></li>
+                <li class="nav1_list_item"><a href="" class="nav_links">Acerca de</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="cajaimagen">
         <div class="caja_titulo">
             <h1>Santiaguía</h1>
@@ -28,7 +39,7 @@
             <div class="caja_titulo_op"> 
                 <h2>Mapa de riesgo</h2>
                 <p>Busca que tan segura es la zona donde vas</p>
-                <a href="{% url 'riesgozonas' %}">  
+                <a href="{% url 'maps:riesgozonas' %}">  
                 <button class="btn-ver-mapa">Ver mapa</button>
                 </a>
             </div>
