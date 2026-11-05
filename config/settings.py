@@ -42,8 +42,6 @@ WIKI_ANONYMOUS_WRITE = False
 
 INSTALLED_APPS = [
     'accounts',
-    'mapa',
-    'santiaguia',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
