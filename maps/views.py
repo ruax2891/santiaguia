@@ -7,7 +7,7 @@ def mapa_puntos_interes(request):
 
             "custom_type": "Universidad",
             "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
-            "custom_razonvisita": ["Lugar de estudios"],
+            "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
 
             "lat": -33.49089371165112,
             "lng": -70.61913133268338,

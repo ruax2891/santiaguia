@@ -33,23 +33,30 @@ crossorigin=""></script>
 
     const places = JSON.parse(document.getElementById("places-data").textContent);
     places.forEach(p => {
-
         newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
-        
 
         newMarker.on("click", e => {
             document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
             document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
             document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
 
-            
+            textoFinalRelevantes = ""
+            console.log(p, p.custom_relevantes)
 
-            textoRelevantes = ""
-            p.custom_relevantes.forEach(texto => {
-                textoRelevantes = textoRelevantes + texto
-            })
+            for (const textoDeRelevante of p.custom_relevantes) {
+                console.log(textoDeRelevante)
+                textoFinalRelevantes += "<p>" + textoDeRelevante + "</p>"
+            }
 
-            document.getElementById("ListaElementosZona").innerHTML = "Tipo: " + p.custom_type
+            document.getElementById("ListaElementosZona").innerHTML = textoFinalRelevantes
+
+            textoFinalRazonVisita = ""
+            for (const textoDeRazonVisita of p.custom_razonvisita) {
+                console.log(textoDeRazonVisita)
+                textoFinalRazonVisita += "<p>" + textoDeRazonVisita + "</p>"
+            }
+
+            document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
         });
     });
 </script>
