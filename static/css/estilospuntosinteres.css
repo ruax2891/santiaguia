@@ -123,7 +123,7 @@ body {
 }
 
 .caja_medio {
-    height: 80%;
+    height: 100%;
     width: 50%;
     background-color: #fff;
     display: inline-block;
@@ -133,7 +133,7 @@ body {
 }
 
 .mapa {
-    height: 500px;
+    height: 650px;
     width: 900px;
     border: 2px solid #eee;
     margin: auto;

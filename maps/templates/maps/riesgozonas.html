@@ -8,11 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../PAGINA PRINCIPAL/safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
     <title>Santiaguía</title>
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="">
+
+    <style>
+        body { margin: 0; }
+        #map { height: 100%; width: 100%; }
+    </style>
 </head>
+
 <body>
-    {% include "principal.html" %}
-    
+    {% include "cabeceraprincipal.html" %}
+
     <h1 class="titulo">Mapa de puntos de interés</h1>
+
     <div class="contenedor">
         <div class="caja_izq">
             <div class="indice_izq">
@@ -33,28 +45,29 @@
         </div>
         <div class="caja_medio">
             <div class="mapa">
-
+                {% include "maps/fullmap.html" %}
             </div>
-        </div> 
+        </div>
+
         <div class="caja_der">
             <div class="indice_der">
-                <h2>Detalles de la zona seleccionada</h2>
+                <h2 id="TituloZona">Selecciona un punto de interés...</h2>
                 <div class="detail zona_define">
-                    <p>Zona: Zona 2</p>
-                    <p><span>Tipo: Zona turística</span></p>
+                    <p id="EtiquetaNombreZona">Zona: -</p>
+                    <p id="EtiquetaTipoZona">Tipo: -</p>
                 </div>
                 <div class="detail zona_encontrar">
-                    <h3>Que encontraras:</h3>
+                    <h3>Lo que encontrarás:</h3>
                     <p>Patrimonios</p>
                     <p>Edificios importantes a nivel cultural</p>
                 </div>
                 <div class="detail zona_visitar">
-                    <h3>Porque visitar esta zona?</h3>
+                    <h3>¿Porque visitar esta zona?</h3>
                     <p>Porque es un gran panorama para visitar el fin de semana</p>
                     <p>Lindo spot de fotos</p>
                 </div>
+                </div>
             </div>
-            </div>
-    </div>    
+    </div>
 </body>
 </html>
