@@ -1,6 +1,7 @@
 <div id="map"></div>
 
 {{ places|json_script:"places-data" }}
+{{ zones|json_script:"zones-data" }}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -36,7 +37,7 @@ crossorigin=""></script>
         newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
 
         newMarker.on("click", e => {
-            document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
+            document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
             document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
             document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
 
@@ -59,4 +60,26 @@ crossorigin=""></script>
             document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
         });
     });
+
+    const zones = JSON.parse(document.getElementById("zones-data").textContent);
+    console.log(zones)
+    zones.forEach(p => {
+        newPolygon = L.polygon(p.points).addTo(map)
+
+        newPolygon.on("click", e => {
+            document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
+            document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
+            document.getElementById("EtiquetaTipoRiesgo").innerHTML = "Tipo: " + p.custom_riesgo
+
+            textoFinalRazonRiesgos = ""
+            for (const textoDeRazonRiesgo of p.custom_razonriesgo) {
+                console.log(textoDeRazonRiesgo)
+                textoFinalRazonRiesgos += "<p>" + textoDeRazonRiesgo + "</p>"
+            }
+
+            document.getElementById("ListaDetallesRiesgo").innerHTML = textoFinalRazonRiesgos
+        })
+    });
+
+
 </script>
