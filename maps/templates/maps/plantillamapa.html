@@ -42,6 +42,13 @@ crossorigin=""></script>
             document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
             document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
 
+            
+
+            textoRelevantes = ""
+            p.custom_relevantes.forEach(texto => {
+                textoRelevantes = textoRelevantes + texto
+            })
+
             document.getElementById("ListaElementosZona").innerHTML = "Tipo: " + p.custom_type
         });
     });

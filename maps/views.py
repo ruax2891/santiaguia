@@ -14,7 +14,7 @@ def mapa_puntos_interes(request):
 
         },
     ]
-    return render(request, "maps/puntosinteres.html", {"places": places})
+    return render(request, "maps/v_puntosinteres.html", {"places": places})
 
 def mapa_riesgo_zonas(request):
     places = [
@@ -30,4 +30,4 @@ def mapa_riesgo_zonas(request):
 
         },
     ]
-    return render(request, "maps/puntosinteres.html", {"places": places})
+    return render(request, "maps/v_riesgozonas.html", {"places": places})
