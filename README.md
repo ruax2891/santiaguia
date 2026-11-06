@@ -1,3 +1,25 @@
 # Santiaguía
-La Santiaguía es un proyecto para el ramo Proyecto Inicial (IWG400) en la carrera Ing. Civ. Informática, que tiene como propósito brindar una guía al estudiante universitario foráneo que le ayude a la confusión y inseguridad que pueda sentir al no conocer mucho de la ciudad. Se crea este proyecto por la falta de información centralizada y curada para el estudiante foráneo universitario.
-Se puede ver la organización de proyecto en [PROYECTO.md](https://github.com/ruax2891/santiaguia/blob/main/PROYECTO.md) en la carpeta raíz del repositorio.
+La Santiaguía es una página web escrita con Django.
+
+Es un portal de información que ayuda al estudiante foráneo a vivir y estudiar en Santiago, a través de una wiki, mapa y, además, cuenta con un sistema de colaboración para que alumnos o personas puedan ayudar con nueva información a añadir.
+
+## Setup
+Las instrucciones están pensadas en ser ejecutadas a través de una CLI (command line interface).\
+*IMPORTANTE*: Es necesario tener `git`, `python` (>= 3.15.2) y `pip`.
+1. Clonar el repositorio
+> Dentro de una carpeta, ejecuta el comando `git clone https://github.com/ruax2891/santiaguia/main`. Esto clonará el repositorio a la carpeta en la que estás situado en tu CLI.
+> Usa `cd santiaguia` para entrar a la carpeta del repositorio
+
+2. Entorno virtual
+> Crea el entorno virtual: `python -m venv venv/`.
+> Activa el entorno virtual:
+> - \*nix: `source venv/bin/activate`.
+> - Windows (cmd): `venv\Scripts\activate.bat`.
+> - Windows (PowerShell): `venv\Scripts\Activate.ps1`.
+
+3. Instalación de dependencias
+> Instala las dependencias del entorno virtual: `pip install -r requirements.txt`.
+
+4. Corre el servidor de testeo de django
+> Estando en la carpeta raiz del repositorio, corre `python manage.py runserver`.
+> En un navegador, entra a `http://localhost:8000/` o `http://127.0.0.1:8000/`.
