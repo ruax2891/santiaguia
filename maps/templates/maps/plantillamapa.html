@@ -8,7 +8,21 @@ integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 crossorigin=""></script>
 
 <script>
-    function defaultPin(scale = 1, color = "") {
+
+const centro_santiago = [-33.44464250806337, -70.65612825784866]
+const map = L.map("map").setView(centro_santiago, 12);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 15,
+    referrerPolicy: "strict-origin-when-cross-origin",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Formato de elemento:
+// { data: {datos con los que venia el elemento}, instance: marker }
+marcadoresRegistrados = []
+
+function defaultPin(scale = 1, color = "") {
     return new L.Icon.Default({
         iconSize:      [Math.round(25 * scale), Math.round(41 * scale)],
         iconAnchor:    [Math.round(12 * scale), Math.round(41 * scale)],
@@ -17,96 +31,88 @@ crossorigin=""></script>
         shadowSize:    [Math.round(41 * scale), Math.round(41 * scale)],
         className:     color ? `pin-${color}` : "",
     });
-    }
+}
 
-    // Formato de elemento:
-    // { data: {datos con los que venia el elemento}, instance: marker }
-    marcadoresRegistrados = []
+const selector_comuna = document.getElementById("selector_comuna")
+selector_comuna.addEventListener("change", (event) => {
+    const comuna_seleccionada = event.target.value
 
-    const selector_comuna = document.getElementById("selector_comuna")
-    selector_comuna.addEventListener("change", (event) => {
-        const comuna_seleccionada = event.target.value
+    marcadoresRegistrados.forEach(element => {
+        if (comuna_seleccionada == "" || element.data.comuna == comuna_seleccionada) {
+            map.addLayer(element.instance);
+        } else {
+            map.removeLayer(element.instance);
+        }
+    });
 
-        marcadoresRegistrados.forEach(element => {
-            if (comuna_seleccionada == "" || element.data.comuna == comuna_seleccionada) {
-                map.addLayer(element.instance);
-            } else {
-                map.removeLayer(element.instance);
-            }
-        });
+    console.log("Se selecciono la comuna", event.target.value)
+})
 
-        console.log("Se selecciono la comuna", event.target.value)
+// Registra todos los puntos de interes en el mapa
+const places = JSON.parse(document.getElementById("places-data").textContent);
+places.forEach(p => {
+    newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
+
+    marcadoresRegistrados.push({data: p, instance: newMarker});
+
+    newMarker.on("click", e => {
+        document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
+        document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
+        document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
+
+        textoFinalRelevantes = ""
+        console.log(p, p.custom_relevantes)
+
+        for (const textoDeRelevante of p.custom_relevantes) {
+            console.log(textoDeRelevante)
+            textoFinalRelevantes += "<p>" + textoDeRelevante + "</p>"
+        }
+
+        document.getElementById("ListaElementosZona").innerHTML = textoFinalRelevantes
+
+        textoFinalRazonVisita = ""
+        for (const textoDeRazonVisita of p.custom_razonvisita) {
+            console.log(textoDeRazonVisita)
+            textoFinalRazonVisita += "<p>" + textoDeRazonVisita + "</p>"
+        }
+
+        document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
+    });
+});
+
+// Registra todas las zonas en el mapa
+const zones = JSON.parse(document.getElementById("zones-data").textContent);
+console.log(zones)
+zones.forEach(p => {
+    newPolygon = L.polygon(p.points).addTo(map)
+
+    newPolygon.on("click", e => {
+        document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
+        document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
+        document.getElementById("EtiquetaTipoRiesgo").innerHTML = "Tipo: " + p.custom_riesgo
+
+        textoFinalRazonRiesgos = ""
+        for (const textoDeRazonRiesgo of p.custom_razonriesgo) {
+            console.log(textoDeRazonRiesgo)
+            textoFinalRazonRiesgos += "<p>" + textoDeRazonRiesgo + "</p>"
+        }
+
+        document.getElementById("ListaDetallesRiesgo").innerHTML = textoFinalRazonRiesgos
     })
 
-    const map = L.map("map").setView([-33.44464250806337, -70.65612825784866], 12);
+    newPolygon.bindTooltip(p.name, {
+        permanent: true,
+        direction: "center",
+        className: "polygon-label",
+    })
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 15,
-        referrerPolicy: "strict-origin-when-cross-origin",
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+});
 
-    map.on("click", e => {
-        console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
-    });
 
-    // Registra todos los puntos de interes en el mapa
-    const places = JSON.parse(document.getElementById("places-data").textContent);
-    places.forEach(p => {
-        newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
+// Debug
+map.on("click", e => {
+    console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
+});
 
-        marcadoresRegistrados.push({data: p, instance: newMarker});
 
-        newMarker.on("click", e => {
-            document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
-            document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
-            document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
-
-            textoFinalRelevantes = ""
-            console.log(p, p.custom_relevantes)
-
-            for (const textoDeRelevante of p.custom_relevantes) {
-                console.log(textoDeRelevante)
-                textoFinalRelevantes += "<p>" + textoDeRelevante + "</p>"
-            }
-
-            document.getElementById("ListaElementosZona").innerHTML = textoFinalRelevantes
-
-            textoFinalRazonVisita = ""
-            for (const textoDeRazonVisita of p.custom_razonvisita) {
-                console.log(textoDeRazonVisita)
-                textoFinalRazonVisita += "<p>" + textoDeRazonVisita + "</p>"
-            }
-
-            document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
-        });
-    });
-
-    // Registra todas las zonas en el mapa
-    const zones = JSON.parse(document.getElementById("zones-data").textContent);
-    console.log(zones)
-    zones.forEach(p => {
-        newPolygon = L.polygon(p.points).addTo(map)
-
-        newPolygon.on("click", e => {
-            document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
-            document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
-            document.getElementById("EtiquetaTipoRiesgo").innerHTML = "Tipo: " + p.custom_riesgo
-
-            textoFinalRazonRiesgos = ""
-            for (const textoDeRazonRiesgo of p.custom_razonriesgo) {
-                console.log(textoDeRazonRiesgo)
-                textoFinalRazonRiesgos += "<p>" + textoDeRazonRiesgo + "</p>"
-            }
-
-            document.getElementById("ListaDetallesRiesgo").innerHTML = textoFinalRazonRiesgos
-        })
-
-        newPolygon.bindTooltip(p.name, {
-            permanent: true,
-            direction: "center",
-            className: "polygon-label",
-        })
-
-    });
 </script>
