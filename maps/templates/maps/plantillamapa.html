@@ -79,6 +79,13 @@ crossorigin=""></script>
 
             document.getElementById("ListaDetallesRiesgo").innerHTML = textoFinalRazonRiesgos
         })
+
+        newPolygon.bindTooltip(p.name, {
+            permanent: true,
+            direction: "center",
+            className: "polygon-label",
+        })
+
     });
 
 
