@@ -11,7 +11,7 @@ def index(request):
     template = loader.get_template("forms/index.html")
     contexto = {"form": form}
     if request.method == 'POST':
-        if 'guardar' in "request.POST":
+        if 'enviar' in request.POST:
             form = RespuestaForm(request.POST)
             form.save()
     return HttpResponse(template.render(contexto, request))
