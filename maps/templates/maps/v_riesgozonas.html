@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/estilospuntosinteres.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../PAGINA PRINCIPAL/safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
+    <title>Santiaguía</title>
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="">
+
+    <style>
+        body { margin: 0; }
+        #map { height: 100%; width: 100%; }
+    </style>
+</head>
+
+<body>
+    {% include "cabeceraprincipal.html" %}
+
+    <h1 class="titulo">Mapa de zonas de riesgo</h1>
+
+    <div class="contenedor">
+        {% include 'maps/selectorriesgo.html' %}
+
+        <div class="caja_medio">
+            <div class="mapa">
+                {% include "maps/plantillamapa.html" %}
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
