@@ -1,0 +1,22 @@
+<html>
+<head><title>Respuestas</title></head>
+<body>
+<h1>Respuestas de Colaboración</h1>
+<table>
+
+<tr><th>Correo</th><th>Texto</th><th>Fuentes</th></tr>
+<tr>
+{% for field in form %}
+    <td>{{ field }}</td>
+{% endfor %}
+</tr>
+{% for respuesta in respuestas %}
+    <tr>
+        <td>{{ respuesta.email }}</td>
+        <td>{{ respuesta.texto }}</td>
+        <td>{{ respuesta.fuentes }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
