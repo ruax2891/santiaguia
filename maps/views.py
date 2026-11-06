@@ -4,6 +4,7 @@ def mapa_puntos_interes(request):
     places = [
         {
             "name": "USM San Joaquin",
+            "comuna": "Santiago",
 
             "custom_type": "Universidad",
             "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
@@ -11,6 +12,30 @@ def mapa_puntos_interes(request):
 
             "lat": -33.49089371165112,
             "lng": -70.61913133268338,
+        },
+
+        {
+            "name": "USM San Joaquin",
+            "comuna": "Providencia",
+
+            "custom_type": "Universidad",
+            "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
+            "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
+
+            "lat": -33.5089381165112,
+            "lng": -70.61913143268338,
+        },
+
+        {
+            "name": "USM San Joaquin",
+            "comuna": "Puente Alto",
+
+            "custom_type": "Universidad",
+            "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
+            "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
+
+            "lat": -33.52089371165112,
+            "lng": -70.62913133268338,
         },
     ]
 
@@ -21,7 +46,7 @@ def mapa_riesgo_zonas(request):
     places = []
     zones = [
         {
-            "name": "zona1",
+            "name": "feik providencia",
 
             "custom_riesgo": "Riesgo Alto",
             "custom_razonriesgo": ["Razon numero 1", "Razon numero 2", "La tercera"],

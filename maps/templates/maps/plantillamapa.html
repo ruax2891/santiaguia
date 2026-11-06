@@ -19,6 +19,25 @@ crossorigin=""></script>
     });
     }
 
+    // Formato de elemento:
+    // { data: {datos con los que venia el elemento}, instance: marker }
+    marcadoresRegistrados = []
+
+    const selector_comuna = document.getElementById("selector_comuna")
+    selector_comuna.addEventListener("change", (event) => {
+        const comuna_seleccionada = event.target.value
+
+        marcadoresRegistrados.forEach(element => {
+            if (comuna_seleccionada == "" || element.data.comuna == comuna_seleccionada) {
+                map.addLayer(element.instance);
+            } else {
+                map.removeLayer(element.instance);
+            }
+        });
+
+        console.log("Se selecciono la comuna", event.target.value)
+    })
+
     const map = L.map("map").setView([-33.44464250806337, -70.65612825784866], 12);
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -27,14 +46,16 @@ crossorigin=""></script>
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Put the test handler right here, before anything that parses data
     map.on("click", e => {
         console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
     });
 
+    // Registra todos los puntos de interes en el mapa
     const places = JSON.parse(document.getElementById("places-data").textContent);
     places.forEach(p => {
         newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
+
+        marcadoresRegistrados.push({data: p, instance: newMarker});
 
         newMarker.on("click", e => {
             document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
@@ -61,6 +82,7 @@ crossorigin=""></script>
         });
     });
 
+    // Registra todas las zonas en el mapa
     const zones = JSON.parse(document.getElementById("zones-data").textContent);
     console.log(zones)
     zones.forEach(p => {
@@ -87,6 +109,4 @@ crossorigin=""></script>
         })
 
     });
-
-
 </script>
