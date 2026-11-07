@@ -1,13 +1,24 @@
 <div id="map"></div>
 
 {{ places|json_script:"places-data" }}
+{{ zones|json_script:"zones-data" }}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 crossorigin=""></script>
 
 <script>
-    function defaultPin(scale = 1, color = "") {
+
+const centro_santiago = [-33.44464250806337, -70.65612825784866]
+const map = L.map("map").setView(centro_santiago, 12);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 15,
+    referrerPolicy: "strict-origin-when-cross-origin",
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+function defaultPin(scale = 1, color = "") {
     return new L.Icon.Default({
         iconSize:      [Math.round(25 * scale), Math.round(41 * scale)],
         iconAnchor:    [Math.round(12 * scale), Math.round(41 * scale)],
@@ -16,47 +27,119 @@ crossorigin=""></script>
         shadowSize:    [Math.round(41 * scale), Math.round(41 * scale)],
         className:     color ? `pin-${color}` : "",
     });
+}
+
+// Formato de elemento:
+// { data: {datos con los que venia el elemento}, instance: marker }
+marcadoresRegistrados = []
+
+var comuna_seleccionada = ""
+var tipo_seleccionado = ""
+
+function actualizarVisibilidadMarcador(elemento) {
+    pertenece_a_comuna = (comuna_seleccionada == "" || elemento.data.comuna == comuna_seleccionada)
+    pertenece_a_tipo = (tipo_seleccionado == "" || elemento.data.tipo == tipo_seleccionado)
+
+    console.log(elemento.data.comuna, elemento.data.tipo)
+
+    if (pertenece_a_comuna && pertenece_a_tipo) {
+        map.addLayer(elemento.instance);
+    } else {
+        map.removeLayer(elemento.instance);
     }
+}
 
-    const map = L.map("map").setView([-33.44464250806337, -70.65612825784866], 12);
+const selector_comuna = document.getElementById("selector_comuna")
+if (selector_comuna != null) {
+    selector_comuna.addEventListener("change", (event) => {
+        comuna_seleccionada = event.target.value
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 15,
-        referrerPolicy: "strict-origin-when-cross-origin",
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Put the test handler right here, before anything that parses data
-    map.on("click", e => {
-        console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
-    });
-
-    const places = JSON.parse(document.getElementById("places-data").textContent);
-    places.forEach(p => {
-        newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
-
-        newMarker.on("click", e => {
-            document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
-            document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
-            document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
-
-            textoFinalRelevantes = ""
-            console.log(p, p.custom_relevantes)
-
-            for (const textoDeRelevante of p.custom_relevantes) {
-                console.log(textoDeRelevante)
-                textoFinalRelevantes += "<p>" + textoDeRelevante + "</p>"
-            }
-
-            document.getElementById("ListaElementosZona").innerHTML = textoFinalRelevantes
-
-            textoFinalRazonVisita = ""
-            for (const textoDeRazonVisita of p.custom_razonvisita) {
-                console.log(textoDeRazonVisita)
-                textoFinalRazonVisita += "<p>" + textoDeRazonVisita + "</p>"
-            }
-
-            document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
+        marcadoresRegistrados.forEach(elemento => {
+            actualizarVisibilidadMarcador(elemento)
         });
+
+        console.log("Se selecciono la comuna", event.target.value)
+    })
+}
+
+const selector_tipo = document.getElementById("selector_tipo")
+if (selector_tipo != null) {
+    selector_tipo.addEventListener("change", (event) => {
+        tipo_seleccionado = event.target.value
+
+        marcadoresRegistrados.forEach(elemento => {
+            actualizarVisibilidadMarcador(elemento)
+        });
+
+        console.log("Se selecciono la comuna", event.target.value)
+    })
+}
+
+// Registra todos los puntos de interes en el mapa
+const places = JSON.parse(document.getElementById("places-data").textContent);
+places.forEach(p => {
+    newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
+
+    marcadoresRegistrados.push({data: p, instance: newMarker});
+
+    newMarker.on("click", e => {
+        document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
+        document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
+        document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.tipo
+
+        textoFinalRelevantes = ""
+        console.log(p, p.custom_relevantes)
+
+        for (const textoDeRelevante of p.custom_relevantes) {
+            console.log(textoDeRelevante)
+            textoFinalRelevantes += "<p>" + textoDeRelevante + "</p>"
+        }
+
+        document.getElementById("ListaElementosZona").innerHTML = textoFinalRelevantes
+
+        textoFinalRazonVisita = ""
+        for (const textoDeRazonVisita of p.custom_razonvisita) {
+            console.log(textoDeRazonVisita)
+            textoFinalRazonVisita += "<p>" + textoDeRazonVisita + "</p>"
+        }
+
+        document.getElementById("ListaRazonVisita").innerHTML = textoFinalRazonVisita
     });
+});
+
+// Registra todas las zonas en el mapa
+const zones = JSON.parse(document.getElementById("zones-data").textContent);
+console.log(zones)
+zones.forEach(p => {
+    newPolygon = L.polygon(p.points).addTo(map)
+
+    newPolygon.on("click", e => {
+        document.getElementById("TituloZona").innerHTML = "Detalles de la zona seleccionada"
+        document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
+        document.getElementById("EtiquetaTipoRiesgo").innerHTML = "Tipo: " + p.custom_riesgo
+
+        textoFinalRazonRiesgos = ""
+        for (const textoDeRazonRiesgo of p.custom_razonriesgo) {
+            console.log(textoDeRazonRiesgo)
+            textoFinalRazonRiesgos += "<p>" + textoDeRazonRiesgo + "</p>"
+        }
+
+        document.getElementById("ListaDetallesRiesgo").innerHTML = textoFinalRazonRiesgos
+    })
+
+    newPolygon.bindTooltip(p.name, {
+        permanent: true,
+        direction: "center",
+        className: "polygon-label",
+    })
+
+});
+
+
+// Debug
+map.on("click", e => {
+    console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
+});
+
+
 </script>
