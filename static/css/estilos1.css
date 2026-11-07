@@ -7,6 +7,7 @@ body {
     width: 100%;
     background-color: #1c5799;
 }
+
 .navprincipal {
     box-sizing: border-box;
     position: relative;
@@ -40,15 +41,20 @@ body {
 }
 
 .nav_links:hover {
-    background-color: #0c3789  ;
+    background-color: #0c3789;
 }
 
 .cajaimagen {
-    width: 100vw;
+    width: 100%;
     height: 350px;
-    background-image: url(https://images.visitchile.com/destinos/615_COSTANERA_CENTER.jpg?w=960&h=448&fit=crop&q=auto&auto=format);
-    background-size: contain;
-    position: relative;
+    background-image: url(../images/Background.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .caja_titulo {
@@ -56,21 +62,18 @@ body {
     width: 200px;
     height: 45px;
     background-color: #e8eff6;
-    position:absolute;
-    left: 40em;
-    top: 4.5em;
     border-radius: 10px;
     padding: 6px 14px;
     z-index: 2;
+    margin-bottom: 20px;
 }
-
 
 .caja_titulo h1 {
     text-align: center;
     margin: 0;
     font-size: 40px;
     font-weight: 600;
-    color: #124c83
+    color: #124c83;
 }
 
 .caja_subtitulo {
@@ -78,11 +81,8 @@ body {
     width: 400px;
     height: 105px;
     background-color: #e8eff6;
-    position:absolute;
-    left: 33.5em;
-    top: 10.5em;
     border-radius: 10px;
-    padding: 6px 14px
+    padding: 6px 14px;
 }
 
 .caja_subtitulo p {
@@ -90,9 +90,8 @@ body {
     margin: 0;
     font-size: 26px;
     font-weight: 600;
-    color: #124c83
+    color: #124c83;
 }
-
 
 .cajaopciones {
     width: 100%;
@@ -120,13 +119,11 @@ body {
 
 .opcion2 { 
     margin-left: 30px;
-
 }
 
 .opcion3 {
     margin-right: 60px;
     margin-left: 30px;
-
 }
 
 .imagenop {
@@ -153,10 +150,9 @@ body {
 .caja_titulo_op a {
     text-decoration: none;
     color: #000;
-
 }
 
-.btn-ver-mapa { /*COSA HECHA POR IA*/
+.btn-ver-mapa { 
     display: inline-block;
     background-color: #f28b24;              
     border: none;               
@@ -167,9 +163,7 @@ body {
     cursor: pointer;
     position: absolute;
     top: 8.5em;
-
 }            
-
 
 footer {
     margin-top: auto;
@@ -181,4 +175,19 @@ footer {
     box-sizing: border-box;
 }
 
+@media (max-width: 1024px) {
+    .caja_izq { 
+        width: 300px; 
+    }
+}
 
+@media (max-width: 768px) {
+    .contenedor { 
+        flex-direction: column; 
+    }
+    
+    .caja_izq, .caja_medio {
+        width: 100%; 
+        margin-left: 0;
+    }
+}

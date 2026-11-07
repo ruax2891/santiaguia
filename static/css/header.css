@@ -1,0 +1,43 @@
+.header {
+    width: 100%;
+    background-color: #1c5799;
+}
+
+.navprincipal {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav0_list {
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    font-size: 2em;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav1_list {
+    list-style: none;
+    margin: 0;
+    margin-right: 40px;
+    padding: 0;
+}
+
+.nav1_list_item {
+    display: inline-block;
+}
+
+.navprincipal a {
+    font-weight: 100;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 18px;
+}
+
+.nav_links:hover {
+    background-color: #0c3789;
+}
