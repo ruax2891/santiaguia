@@ -6,7 +6,7 @@ def mapa_puntos_interes(request):
             "name": "USM San Joaquin",
             "comuna": "Santiago",
 
-            "custom_type": "Universidad",
+            "tipo": "Universidad",
             "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
             "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
 
@@ -15,24 +15,24 @@ def mapa_puntos_interes(request):
         },
 
         {
-            "name": "USM San Joaquin",
+            "name": "Ubicacion 2 - Prueba",
             "comuna": "Providencia",
 
-            "custom_type": "Universidad",
-            "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
-            "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
+            "tipo": "Lugar tipo 2",
+            "custom_relevantes": ["Abc", "Def", "Ghi"],
+            "custom_razonvisita": ["Lugar de descanso", "Mala ubicacion"],
 
             "lat": -33.5089381165112,
             "lng": -70.61913143268338,
         },
 
         {
-            "name": "USM San Joaquin",
+            "name": "Ubicacion 3 - Prueba",
             "comuna": "Puente Alto",
 
-            "custom_type": "Universidad",
-            "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
-            "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
+            "tipo": "Lugar tipo 3",
+            "custom_relevantes": ["Patrimonios Mas o menos", "Edificios bajos", "Biblioteca estandar"],
+            "custom_razonvisita": ["Aire libre", "Razon 2"],
 
             "lat": -33.52089371165112,
             "lng": -70.62913133268338,

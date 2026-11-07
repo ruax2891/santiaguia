@@ -18,10 +18,6 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Formato de elemento:
-// { data: {datos con los que venia el elemento}, instance: marker }
-marcadoresRegistrados = []
-
 function defaultPin(scale = 1, color = "") {
     return new L.Icon.Default({
         iconSize:      [Math.round(25 * scale), Math.round(41 * scale)],
@@ -33,20 +29,51 @@ function defaultPin(scale = 1, color = "") {
     });
 }
 
+// Formato de elemento:
+// { data: {datos con los que venia el elemento}, instance: marker }
+marcadoresRegistrados = []
+
+var comuna_seleccionada = ""
+var tipo_seleccionado = ""
+
+function actualizarVisibilidadMarcador(elemento) {
+    pertenece_a_comuna = (comuna_seleccionada == "" || elemento.data.comuna == comuna_seleccionada)
+    pertenece_a_tipo = (tipo_seleccionado == "" || elemento.data.tipo == tipo_seleccionado)
+
+    console.log(elemento.data.comuna, elemento.data.tipo)
+
+    if (pertenece_a_comuna && pertenece_a_tipo) {
+        map.addLayer(elemento.instance);
+    } else {
+        map.removeLayer(elemento.instance);
+    }
+}
+
 const selector_comuna = document.getElementById("selector_comuna")
-selector_comuna.addEventListener("change", (event) => {
-    const comuna_seleccionada = event.target.value
+if (selector_comuna != null) {
+    selector_comuna.addEventListener("change", (event) => {
+        comuna_seleccionada = event.target.value
 
-    marcadoresRegistrados.forEach(element => {
-        if (comuna_seleccionada == "" || element.data.comuna == comuna_seleccionada) {
-            map.addLayer(element.instance);
-        } else {
-            map.removeLayer(element.instance);
-        }
-    });
+        marcadoresRegistrados.forEach(elemento => {
+            actualizarVisibilidadMarcador(elemento)
+        });
 
-    console.log("Se selecciono la comuna", event.target.value)
-})
+        console.log("Se selecciono la comuna", event.target.value)
+    })
+}
+
+const selector_tipo = document.getElementById("selector_tipo")
+if (selector_tipo != null) {
+    selector_tipo.addEventListener("change", (event) => {
+        tipo_seleccionado = event.target.value
+
+        marcadoresRegistrados.forEach(elemento => {
+            actualizarVisibilidadMarcador(elemento)
+        });
+
+        console.log("Se selecciono la comuna", event.target.value)
+    })
+}
 
 // Registra todos los puntos de interes en el mapa
 const places = JSON.parse(document.getElementById("places-data").textContent);
@@ -58,7 +85,7 @@ places.forEach(p => {
     newMarker.on("click", e => {
         document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
         document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
-        document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.custom_type
+        document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.tipo
 
         textoFinalRelevantes = ""
         console.log(p, p.custom_relevantes)
