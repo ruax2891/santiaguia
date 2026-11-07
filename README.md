@@ -21,5 +21,10 @@ Las instrucciones están pensadas en ser ejecutadas a través de una CLI (comman
 > Instala las dependencias del entorno virtual: `pip install -r requirements.txt`.
 
 4. Corre el servidor de testeo de django
+> Estando en la carpeta raíz del repositorio, crea un usuario administrador con `python manage.py createsuperuser` y ingresa los datos que desees.
 > Estando en la carpeta raiz del repositorio, corre `python manage.py runserver`.
 > En un navegador, entra a `http://localhost:8000/` o `http://127.0.0.1:8000/`.
+
+5. Probar funcionalidad corazón
+> Mientras la página está andando, entra al apartado de Wiki `http://localhost:8000/wiki/` y entra como usuario administrador.
+> Luego, sigue los pasos que indica la página para crear el primer artículo raíz y finalmente puedes crear, modificar y ver el historial de los artículos ocupando los botones integrados en la página de wiki.
