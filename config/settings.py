@@ -38,7 +38,11 @@ WIKI_CHECK_SLUG_URL_AVAILABLE = False # fix "riesgoso"
 WIKI_ANONYMOUS_CREATE = False
 WIKI_ANONYMOUS_UPLOAD = False
 WIKI_ANONYMOUS_WRITE = False
-
+#def WIKI_CAN_ADMIN(user): # TODO
+#    if user.name == 'admin':
+#        return True
+#    else:
+#        return False
 # Application definition
 
 INSTALLED_APPS = [

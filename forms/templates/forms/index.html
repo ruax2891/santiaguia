@@ -3,7 +3,7 @@
 <body>
 
 <p>Colaboración</p>
-<form method="post" action="{% url 'index' %}">
+<form method="post" action="{% url 'forms:index' %}">
 {% csrf_token %}
 {{ form }}
 <button name="enviar">Enviar</button>

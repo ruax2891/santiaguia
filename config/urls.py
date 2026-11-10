@@ -32,7 +32,7 @@ urlpatterns = [
     path("", TemplateView.as_view(template_name="index.html"), name="inicio"),
     path("puntosinteres/", TemplateView.as_view(template_name="puntosinteres.html"), name="puntosinteres"),
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
-    path("colaboracion/", include('forms.urls'), name='colaboracion'),
+    path("colaboracion/", include(('forms.urls', 'forms'), namespace='forms'), name='forms'),
     #path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"), # por ahora desactivar
 
     path('notifications/', include('django_nyt.urls')),
