@@ -2,12 +2,14 @@
 <head><title>Colaboración</title></head>
 <body>
 
-<p>Colaboración</p>
+<h1>Colaboración</h1>
 <form method="post" action="{% url 'forms:index' %}">
 {% csrf_token %}
 {{ form }}
 <button name="enviar">Enviar</button>
 </form>
+
+<p><a href="{% url 'forms:respuestas' %}">Ver Respuestas</a></p>
 
 </body>
 </html>
