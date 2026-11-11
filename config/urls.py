@@ -34,6 +34,10 @@ urlpatterns = [
     path("riesgozonas/", TemplateView.as_view(template_name="riesgozonas.html"), name="riesgozonas"),
     path("colaboracion/", include(('forms.urls', 'forms'), namespace='forms'), name='forms'),
     #path("transporte/", TemplateView.as_view(template_name="transporte.html"), name="transporte"), # por ahora desactivar
+    path("transporte/metro/", TemplateView.as_view(template_name="transporte/transporte-metro.html"), name="transporte_metro"),
+    path("transporte/buses/", TemplateView.as_view(template_name="transporte/transporte-buses.html"), name="transporte_buses"),
+    path("transporte/bip/", TemplateView.as_view(template_name="transporte/transporte-bip.html"), name="transporte_bip"),
+    path("transporte/tarifas/", TemplateView.as_view(template_name="transporte/transporte-tarifas.html"), name="transporte_tarifas"),
 
     path('notifications/', include('django_nyt.urls')),
     path('wiki/', include('wiki.urls'), name='wiki'),

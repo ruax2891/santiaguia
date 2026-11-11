@@ -1,0 +1,340 @@
+/* colores base */
+:root {
+	--azul: #14437f;
+	--fondo: #f4f6fb;
+	--texto: #3a4252;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/* fondo y letra general */
+body {
+	font-family: "Segoe UI", Arial, sans-serif;
+	background: var(--fondo);
+	color: var(--texto);
+}
+
+/* links sin subrayado */
+a {
+ text-decoration: none;
+}
+
+/* listas sin puntitos */
+ul {
+ list-style: none;
+}
+
+/* barra azul arriba */
+.barra {
+	background: var(--azul);
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 14px 32px;
+}
+
+/* logo + nombre */
+.barra-marca {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+/* texto logo */
+.logo {
+	color: white;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+
+/* links menu arriba */
+.barra-menu {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+}
+
+/* cada link menu */
+.barra-menu a {
+	color: white;
+	font-size: 14px;
+}
+
+/*pagina actual*/
+.barra-menu a.activo {
+	font-weight: bold;
+	border-bottom: 2px solid white;
+}
+
+/* celular: barra en columna */
+@media (max-width: 800px) {
+	.barra {
+ flex-direction: column; gap: 10px;
+	}
+
+	.barra-menu {
+ justify-content: center; gap: 8px 18px;
+	}
+}
+
+/* margen contenido principal */
+.pagina {
+	padding: 28px 32px 40px;
+}
+
+/* titulo grande */
+.pagina-titulo h1 {
+	color: var(--azul);
+	font-size: 34px;
+}
+
+/* texto bajo titulo */
+.pagina-titulo p {
+	margin-top: 6px;
+	font-size: 15px;
+}
+
+/* 3 columnas: menu, contenido, fotos */
+.pagina-layout {
+	display: grid;
+	grid-template-columns: 220px 1fr 320px;
+	gap: 20px;
+	margin-top: 24px;
+	align-items: start;
+}
+
+/* caja blanca con sombra */
+.panel {
+	background: white;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+}
+
+/* titulo azul panel */
+.panel-titulo {
+	background: var(--azul);
+	color: white;
+	font-size: 15px;
+	padding: 12px 16px;
+}
+
+/*menu lateral izq*/
+.menu-secciones {
+	padding: 12px;
+}
+
+/* botones menu lateral */
+.menu-secciones a {
+	display: block;
+	padding: 10px 12px;
+	border-radius: 6px;
+	color: var(--texto);
+	font-size: 14px;
+}
+
+/* hover menu lateral */
+.menu-secciones a:hover {
+	background: var(--fondo);
+}
+
+/* seccion actual en azul */
+.menu-secciones a.activo {
+	background: var(--azul);
+	color: white;
+	font-weight: bold;
+}
+
+/* desplegables */
+.acordeon {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 16px;
+}
+
+/* cada desplegable */
+.acordeon details {
+	border: 1px solid #cfd6e4;
+	border-radius: 6px;
+	background: #f8faff;
+}
+
+/* titulo desplegable*/
+.acordeon summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 14px;
+	color: var(--azul);
+	font-weight: bold;
+	font-size: 14px;
+	cursor: pointer;
+	list-style: none;
+}
+
+/* sacar flecha default */
+.acordeon summary::-webkit-details-marker {
+ display: none;
+}
+
+/* flecha cerrado */
+.acordeon summary::after {
+ content: "▾";
+}
+
+/*flecha abierto*/
+.acordeon details[open] summary::after {
+ content: "▴";
+}
+
+/* parrafos adentro */
+.acordeon details p {
+	padding: 0 14px 14px;
+	font-size: 14px;
+}
+
+/* imagen mapa metro */
+.mapa-metro {
+	display: block;
+	max-width: 100%;
+	max-height: 460px;
+	margin: 0 auto 16px;
+	object-fit: contain;
+}
+
+/* columna fotos derecha */
+.fotos {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 16px;
+}
+
+/* fotos mismo tamaño */
+.fotos img {
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	object-fit: cover;
+	border-radius: 6px;
+}
+
+/* tablet y celular */
+@media (max-width: 1000px) {
+	.pagina-layout {
+ grid-template-columns: 1fr;
+	}
+
+	.pagina {
+ padding: 20px 16px 32px;
+	}
+
+	.pagina-titulo h1 {
+ font-size: 26px;
+	}
+}
+
+/* celular scroll*/
+.tabla-contenedor {
+	padding: 0 16px 16px;
+	overflow-x: auto;
+}
+
+/* tabla tarifas */
+.tabla {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+/* encabezado azul */
+.tabla th {
+	background: var(--azul);
+	color: white;
+	text-align: left;
+	padding: 10px 12px;
+}
+
+/* filas con linea */
+.tabla td {
+	padding: 10px 12px;
+	border-bottom: 1px solid #e3e7ef;
+}
+
+/* texto adentro desplegable */
+.acordeon details .cuerpo {
+	padding: 0 14px 14px;
+	font-size: 14px;
+	line-height: 1.55;
+}
+
+/* parrafos */
+.acordeon details .cuerpo p {
+ margin: 0 0 10px; padding: 0;
+}
+
+/* listas con punto */
+.acordeon details .cuerpo ul {
+ margin: 0 0 10px; padding-left: 20px; list-style: disc;
+}
+
+/* espacio entre items */
+.acordeon details .cuerpo li {
+ margin-bottom: 5px;
+}
+
+/* ultimo sin margen */
+.acordeon details .cuerpo > *:last-child {
+ margin-bottom: 0;
+}
+
+/* tablas chicas */
+.acordeon details .cuerpo table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0 0 10px;
+	font-size: 13px;
+}
+
+/*encabezado tabla chica*/
+.acordeon details .cuerpo th {
+	background: var(--azul);
+	color: white;
+	text-align: left;
+	padding: 7px 10px;
+}
+
+/* celdas */
+.acordeon details .cuerpo td {
+	padding: 7px 10px;
+	border-bottom: 1px solid #e3e7ef;
+	vertical-align: top;
+}
+
+/* texto gris chico (notas) */
+.acordeon details .cuerpo .nota {
+	color: #5a6377;
+	font-size: 13px;
+}
+
+/* cuadro fuentes abajo */
+.nota-actualizacion {
+	margin: 0 16px 16px;
+	padding: 10px 12px;
+	background: #f8faff;
+	border: 1px solid #cfd6e4;
+	border-radius: 6px;
+	font-size: 13px;
+	line-height: 1.5;
+	color: #5a6377;
+}
+
+/* links fuentes en azul */
+.nota-actualizacion a {
+ color: var(--azul);
+}

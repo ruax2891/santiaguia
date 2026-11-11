@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/dise.css' %}">
+	<title>Tarifas - Transporte público - Santiaguía</title>
+</head>
+<body>
+
+	<header class="barra">
+		<div class="barra-marca">
+			<a href="{% url 'inicio' %}" class="logo">Santiaguía</a>
+		</div>
+		<nav>
+			<ul class="barra-menu">
+				<li><a href="{% url 'transporte_metro' %}" class="activo" aria-current="page">Transporte</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="pagina">
+		<div class="pagina-titulo">
+			<h1>Documentación de transporte público</h1>
+			<p>Todo lo que necesitas para moverte por Santiago de forma simple y segura.</p>
+		</div>
+
+		<div class="pagina-layout transporte">
+
+			<aside class="panel">
+				<h2 class="panel-titulo">Secciones</h2>
+				<nav aria-label="Secciones de transporte">
+					<ul class="menu-secciones">
+						<li><a href="{% url 'transporte_metro' %}">Metro</a></li>
+						<li><a href="{% url 'transporte_buses' %}">Buses</a></li>
+						<li><a href="{% url 'transporte_bip' %}">Tarjeta Bip</a></li>
+						<li><a href="{% url 'transporte_tarifas' %}" class="activo" aria-current="page">Tarifas</a></li>
+					</ul>
+				</nav>
+			</aside>
+
+			<section class="panel">
+				<div class="acordeon">
+					<details>
+						<summary>Tarifas del Metro</summary>
+						<div class="cuerpo">
+							<p>En el Metro el precio depende de la hora a la que entras, no de la distancia que recorras.</p>
+							<table>
+								<thead>
+									<tr><th>Horario</th><th>Tramos (lunes a viernes)</th><th>Valor</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>Punta</td><td>07:00 - 08:59 y 18:00 - 19:59</td><td>$895</td></tr>
+									<tr><td>Valle</td><td>09:00 - 17:59 y 20:00 - 20:44</td><td>$815</td></tr>
+									<tr><td>Bajo</td><td>06:00 - 06:59 y 20:45 - 23:00</td><td>$735</td></tr>
+								</tbody>
+							</table>
+							<p>Los sábados, domingos y festivos no hay tramos: se paga $815 todo el día.</p>
+							<p class="nota">La diferencia entre viajar en punta y en bajo es de $160 por viaje. Si haces dos viajes al día, cinco días a la semana, son unos $6.400 al mes.</p>
+						</div>
+
+					</details>
+					<details>
+						<summary>Tarifas de buses</summary>
+						<div class="cuerpo">
+							<p>En los buses Red la tarifa cuesta lo mismo a cualquier hora y cualquier día.</p>
+							<table>
+								<thead>
+									<tr><th>Servicio</th><th>Horario</th><th>Valor</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>Bus Red</td><td>Todo el día, todos los días</td><td>$795</td></tr>
+								</tbody>
+							</table>
+							<p>Esto significa que en horario punta el bus sale más barato que el Metro ($795 contra $895), y en horario bajo sale más caro ($795 contra $735).</p>
+							<p>Los recorridos nocturnos cobran la misma tarifa.</p>
+						</div>
+					</details>
+					<details>
+						<summary>Integración entre Metro y buses</summary>
+						<div class="cuerpo">
+							<p>Metro y buses funcionan como un solo sistema. Al pagar el primer viaje tienes derecho a seguir combinando sin pagar de nuevo, bajo estas condiciones:</p>
+							<ul>
+								<li>Hasta dos transbordos adicionales.</li>
+								<li>Dentro de 2 horas contadas desde que empezó el primer viaje.</li>
+								<li><strong>Sin repetir</strong> el mismo recorrido de bus.</li>
+							</ul>
+							<p>En la práctica, un viaje casa-universidad que combine micro y Metro se cobra una sola vez.</p>
+							<p>Hay un detalle: si viajas primero en Metro en horario bajo y después tomas un bus, el bus cobra $60 para completar los $795. En horario valle y punta, el bus después del Metro cuesta $0.</p>
+							<p class="nota">Por eso conviene pasar la tarjeta siempre, incluso cuando el transbordo es gratis: así el sistema reconoce que es el mismo viaje.</p>
+						</div>
+					</details>
+					<details>
+						<summary>Descuentos para estudiantes</summary>
+						<div class="cuerpo">
+							<p>Con la Tarjeta Nacional Estudiantil (TNE) pagas $260 por viaje. Esa tarifa vale para Metro, buses Red y Metrotren Nos, las 24 horas, todos los días del año, sin horario punta ni valle.</p>
+							<p>Comparado con la tarifa normal, el ahorro es grande: en horario punta pagas $260 en vez de $895.</p>
+							<p><strong>Cómo obtenerla si entras a la educación superior</strong></p>
+							<ul>
+								<li>La gestiona JUNAEB a través de tu universidad. Tu institución te inscribe en el sistema.</li>
+								<li>La foto se toma en una oficina TNE o en línea desde tne.cl, con tu cédula de identidad a mano.</li>
+								<li>Si entras este año a la educación superior, no necesitas estar matriculado ni pagar por la foto.</li>
+								<li>La TNE nueva de educación superior cuesta $2.700, que se pagan directamente en tu casa de estudios.</li>
+							</ul>
+							<p><strong>Hay que revalidarla todos los años</strong> para seguir pagando la tarifa rebajada. Si se te pierde o se daña, corresponde pedir una reposición.</p>
+							<p class="nota">Mientras esperas tu TNE tendrás que pagar tarifa normal, así que conviene hacer el trámite apenas te matriculas.</p>
+							<p class="nota">Los mayores de 65 años también tienen rebaja: $390 con la bip Adulto Mayor en todo el sistema, o $260 solo en Metro con la Tarjeta Adulto Mayor.</p>
+						</div>
+					</details>
+				</div>
+
+				<div class="tabla-contenedor">
+					<table class="tabla">
+						<thead>
+							<tr><th>Tipo de pasaje</th><th>Horario</th><th>Valor</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>Metro, horario punta</td><td>Lunes a viernes, 07:00 - 08:59 y 18:00 - 19:59</td><td>$895</td></tr>
+							<tr><td>Metro, horario valle</td><td>Lunes a viernes, 09:00 - 17:59 y 20:00 - 20:44</td><td>$815</td></tr>
+							<tr><td>Metro, horario bajo</td><td>Lunes a viernes, 06:00 - 06:59 y 20:45 - 23:00</td><td>$735</td></tr>
+							<tr><td>Metro, fin de semana</td><td>Sábado, domingo y festivos, todo el día</td><td>$815</td></tr>
+							<tr><td>Bus Red</td><td>Todo el día, todos los días</td><td>$795</td></tr>
+							<tr><td>Bus después de Metro, horario bajo</td><td>Lunes a viernes, 06:00 - 06:59 y 20:45 - 23:00</td><td>$60</td></tr>
+							<tr><td>Estudiante con TNE</td><td>Todo el día, todos los días del año</td><td>$260</td></tr>
+							<tr><td>Adulto mayor (bip Adulto Mayor)</td><td>Todo el día, todos los días</td><td>$390</td></tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="nota-actualizacion">
+					Tarifas y horarios tomados de
+					<a href="https://www.metro.cl/el-viaje/horarios-y-tarifas" target="_blank" rel="noopener">Metro de Santiago</a> y
+					<a href="https://www.red.cl/tarifas-y-recargas/conoce-las-tarifas/" target="_blank" rel="noopener">Red Movilidad</a>.
+					Pueden cambiar sin aviso: ante cualquier duda, revisa esos sitios antes de viajar.
+				</p>
+
+			</section>
+
+			<aside class="panel fotos">
+				<img src="{% static 'images/transporte/boleteria.jpg' %}" alt="Boletería de Metro">
+			</aside>
+
+		</div>
+	</main>
+
+</body>
+</html>
