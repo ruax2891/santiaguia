@@ -2,6 +2,7 @@
     <nav class="navprincipal">
         <ul class="nav1_list nav0_list">
             <li class="nav1_list_item" id="link_inicio"><a href="{% url 'inicio' %}">SANTIAGUÍA</a></li>
+            <li class="nav1_list_item">Hola, {{user.username}}</li>
         </ul>
         <ul class="nav1_list">
             <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesion</a></li>
