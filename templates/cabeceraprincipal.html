@@ -5,7 +5,8 @@
             <li class="nav1_list_item">Hola, {{user.username}}</li>
         </ul>
         <ul class="nav1_list">
-            <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesion</a></li>
+            <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesión</a></li>
+            <li class="nav1_list_item"><a href="{% url 'accounts:logout' %}" class="nav_links">Cerrar Sesión</a></li>
             <li class="nav1_list_item"><a href="{% url 'maps:puntosinteres' %}" class="nav_links">Puntos Interes</a></li>
             <li class="nav1_list_item"><a href="{% url 'maps:riesgozonas' %}" class="nav_links">Zonas</a></li>
             <li class="nav1_list_item"><a href="{% url 'forms:index' %}" class="nav_links">Contribuciones</a></li>

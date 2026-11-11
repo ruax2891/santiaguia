@@ -33,7 +33,8 @@ SITE_ID = 1
 WIKI_ACCOUNT_HANDLING = True
 WIKI_ACCOUNT_SIGNUP_ALLOWED = True
 from django.urls import reverse_lazy
-LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
+#LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
+LOGIN_REDIRECT_URL = "inicio"
 WIKI_CHECK_SLUG_URL_AVAILABLE = False # fix "riesgoso"
 WIKI_ANONYMOUS_CREATE = False
 WIKI_ANONYMOUS_UPLOAD = False
