@@ -1,13 +1,65 @@
-<html>
-<head><title>Colaboración</title></head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../static/css/dise.css">
+	<title>Colaboración - Santiaguía</title>
+</head>
 <body>
 
-<p>Colaboración</p>
-<form method="post" action="{% url 'forms:index' %}">
-{% csrf_token %}
-{{ form }}
-<button name="enviar">Enviar</button>
-</form>
+	<header class="barra">
+		<div class="barra-marca">
+			<a href="{% url 'inicio' %}" class="logo">Santiaguía</a>
+		</div>
+		<nav>
+			<ul class="barra-menu">
+                <li><a href="{% url 'accounts:login' %}">Iniciar sesión</a></li>
+			    <li><a href="{% url 'maps:puntosinteres' %}">Puntos de interés</a></li>
+			    <li><a href="{% url 'maps:riesgozonas' %}">Zonas de riesgo</a></li>
+				<li><a href="#" class="activo" aria-current="page">Contribuciones</a></li>
+                <li class="nav1_list_item"><a href="wiki/" class="nav_links">Wiki</a></li>
+                <li><a href="#">Acerca de</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="pagina">
+		<div class="pagina-titulo">
+			<h1>Colaboración</h1>
+			<p>¿Te gustaria aportar con infomación? Envialo!</p>
+		</div>
+
+		<div class="pagina-layout dos-columnas">
+			<section class="panel">
+				<h2 class="panel-titulo">Enviar un aporte</h2>
+
+				<form method="post" action="" class="formulario">
+					<p>
+						<label for="id_texto">Texto:</label>
+						<textarea name="texto" id="id_texto" rows="6"></textarea>
+					</p>
+					<p>
+						<label for="id_email">Email:</label>
+						<input type="email" name="email" id="id_email">
+					</p>
+					<button name="enviar" class="boton">Enviar</button>
+				</form>
+			</section>
+
+			<aside class="panel">
+				<h2 class="panel-titulo">¿Qué puedes aportar?</h2>
+				<div class="ayuda">
+					<p>Tu experiencia ayuda a quienes vienen llegando a Santiago.</p>
+					<ul>
+						<li>Lugares útiles que falten en el mapa</li>
+						<li>Zonas que te parezcan inseguras</li>
+						<li>Datos de transporte desactualizados</li>
+					</ul>
+				</div>
+			</aside>
+		</div>
+	</main>
 
 </body>
 </html>
