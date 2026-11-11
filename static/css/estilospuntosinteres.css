@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: sans-serif;
-    
+    overflow: hidden;
 }
 
 .header {
@@ -53,9 +53,13 @@ body {
 
 .contenedor {
     display: flex;
-    width: 100vw;
+    gap: 15px;
+    width: 100%;
     height: 72vh;
+    padding: 0 20px;
     box-sizing: border-box;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .caja_izq {
@@ -123,22 +127,22 @@ body {
 }
 
 .caja_medio {
+    flex: 1 1 0;
+    min-width: 0;
     height: 100%;
-    width: 50%;
     background-color: #fff;
-    display: inline-block;
     border-radius: 8px;
     border: 2px solid #eee;
-    margin-left: 5px;
+    padding: 12px;
+    box-sizing: border-box;
+    width: auto;
 }
 
 .mapa {
-    height: 650px;
-    width: 900px;
-    border: 2px solid #eee;
-    margin: auto;
-    margin-top: 30px;
+    height: 100%;
+    width: 100%;
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .indice_der {
