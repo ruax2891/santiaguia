@@ -1,0 +1,59 @@
+/* menu arriba */
+.barra {
+    background: #14437f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 32px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* logo y nombre */
+.barra-marca {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.barra .logo {
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+/* link menu */
+.barra-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.barra-menu a {
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+/* pagina actual */
+.barra-menu a.activo {
+	font-weight: bold;
+	border-bottom: 2px solid white;
+}
+
+/* celular: menu en columna */
+@media (max-width: 800px) {
+	.barra {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.barra-menu {
+		justify-content: center;
+		gap: 8px 18px;
+	}
+}

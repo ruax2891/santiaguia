@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'css/estilos1.css' %}">
-    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
@@ -36,6 +35,7 @@
         </div>
         <div class="opciones opcion2">
             <div class="imagenop">
+                <img src="{% static 'images/imgpruebaportada.jpg' %}" alt="Mapa de riesgo">
             </div>
             <div class="caja_titulo_op">
                 <h2>Transporte público</h2>
@@ -47,11 +47,13 @@
         </div>
         <div class="opciones opcion3">
             <div class="imagenop">
+                <img src="{% static 'images/imgpruebaportada2.png' %}" alt="colaboracion" style="object-position: center top;">
             </div>
             <div class="caja_titulo_op"> 
                 <h2>Sistema colaboración</h2>
-                <a>
-                <button class="btn-ver-mapa boton3">Ver recursos</button>
+                <a href="{% url 'forms:index' %}">
+                <p>Falta información? comparte tu aporte</p>
+                <button class="btn-ver-mapa">Colaborar</button>
                 </a>
             </div>
         </div>

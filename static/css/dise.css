@@ -138,7 +138,7 @@ ul {
 	font-size: 14px;
 }
 
-/* hover menu lateral */
+/* fondo menu lateral */
 .menu-secciones a:hover {
 	background: var(--fondo);
 }
@@ -178,7 +178,7 @@ ul {
 	list-style: none;
 }
 
-/* sacar flecha default */
+/* sacar flecha desplegable */
 .acordeon summary::-webkit-details-marker {
  display: none;
 }

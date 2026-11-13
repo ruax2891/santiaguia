@@ -1,15 +1,17 @@
-<header class="header">
-    <nav class="navprincipal">
-        <ul class="nav1_list nav0_list">
-            <li class="nav1_list_item" id="link_inicio"><a href="{% url 'inicio' %}">SANTIAGUÍA</a></li>
-        </ul>
-        <ul class="nav1_list">
-            <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesion</a></li>
-            <li class="nav1_list_item"><a href="{% url 'maps:puntosinteres' %}" class="nav_links">Puntos Interes</a></li>
-            <li class="nav1_list_item"><a href="{% url 'maps:riesgozonas' %}" class="nav_links">Zonas</a></li>
-            <li class="nav1_list_item"><a href="{% url 'forms:index' %}" class="nav_links">Contribuciones</a></li>
-            <li class="nav1_list_item"><a href="wiki/" class="nav_links">Wiki</a></li>
-            <li class="nav1_list_item"><a href="" class="nav_links">Acerca de</a></li>
+<link rel="stylesheet" href="/static/css/cabecera2.css">
+<header class="barra">
+    <div class="barra-marca">
+        <a href="/" class="logo">Santiaguía</a>
+    </div>
+    <nav>
+        <ul class="barra-menu">
+			<li><a href="/accounts/login/">Iniciar sesión</a></li>
+			<li><a href="/mapa/puntosinteres">Puntos de interés</a></li>
+			<li><a href="/mapa/riesgozonas">Zonas</a></li>
+			<li><a href="/colaboracion/">Contribuciones</a></li>
+			<li><a href="/wiki/">Wiki</a></li>
+			<li><a href="#">Acerca de</a></li>
         </ul>
     </nav>
 </header>
+
