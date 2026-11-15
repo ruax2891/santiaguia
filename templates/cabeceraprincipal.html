@@ -2,11 +2,17 @@
     <nav class="navprincipal">
         <ul class="nav1_list nav0_list">
             <li class="nav1_list_item" id="link_inicio"><a href="{% url 'inicio' %}">SANTIAGUÍA</a></li>
-            <li class="nav1_list_item">Hola, {{user.username}}</li>
+            <li class="nav1_list_item" id="saludo_usuario">Hola, {{user.username}}</li>
         </ul>
         <ul class="nav1_list">
-            <li class="nav1_list_item"><a href="{% url 'accounts:login' %}" class="nav_links">Iniciar Sesión</a></li>
-            <li class="nav1_list_item"><a href="{% url 'accounts:logout' %}" class="nav_links">Cerrar Sesión</a></li>
+            <li class="nav1_list_item item-cuenta">
+                <button type="button" class="boton-cuenta" id="botonCuenta">Cuenta</button>
+    
+                <ul class="menu-desplegable" id="menuCuenta">
+                    <li><a href="{% url 'accounts:login' %}" class="sesion">Iniciar Sesión</a></li>
+                    <li><a href="{% url 'accounts:logout' %}" class="sesion">Cerrar Sesión</a></li>
+                </ul>
+            </li>
             <li class="nav1_list_item"><a href="{% url 'maps:puntosinteres' %}" class="nav_links">Puntos Interes</a></li>
             <li class="nav1_list_item"><a href="{% url 'maps:riesgozonas' %}" class="nav_links">Zonas</a></li>
             <li class="nav1_list_item"><a href="{% url 'forms:index' %}" class="nav_links">Contribuciones</a></li>
@@ -18,4 +24,3 @@
         </ul>
     </nav>
 </header>
-

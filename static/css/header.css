@@ -1,0 +1,100 @@
+.header {
+    width: 100%;
+    background-color: #1c5799;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navprincipal {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#saludo_usuario {
+    color: #fff;
+}
+
+.nav0_list {
+    margin: 0;
+    padding: 0;
+    padding-left: 20px;
+    font-size: 2em;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.nav1_list {
+    list-style: none;
+    margin: 0;
+    margin-right: 40px;
+    padding: 0;
+}
+
+.nav1_list_item {
+    display: inline-block;
+}
+
+.navprincipal a {
+    font-weight: 100;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 18px;
+}
+
+.nav_links:hover {
+    background-color: #0c3789;
+}
+
+.boton-cuenta {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    padding: 18px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.boton-cuenta:hover {
+    background-color: #0c3789;
+}
+
+.item-cuenta {
+    position: relative;
+}
+
+.menu-desplegable {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: #1c5799;
+    min-width: 170px;
+    padding: 0;
+    margin: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    list-style: none;
+}
+
+.menu-desplegable.mostrar {
+    display: block;
+}
+
+.menu-desplegable a {
+    display: block;
+    padding: 12px 18px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    text-align: center;
+}
+
+.sesion:hover {
+    background-color: #0c3789;
+}
