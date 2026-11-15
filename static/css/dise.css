@@ -338,3 +338,40 @@ ul {
 .nota-actualizacion a {
  color: var(--azul);
 }
+
+
+/* formulario */
+.formulario {
+	padding: 20px 24px;
+}
+
+.formulario p {
+	margin-bottom: 16px;
+}
+
+.formulario label {
+	display: block;
+	margin-bottom: 6px;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.formulario input,
+.formulario textarea {
+	width: 100%;
+	padding: 10px 12px;
+	border: 1px solid #cfd6e4;
+	border-radius: 6px;
+	font: inherit;
+}
+
+/* boton azul */
+.boton {
+	background: var(--azul);
+	color: white;
+	border: 0;
+	border-radius: 6px;
+	padding: 10px 24px;
+	font-weight: bold;
+	cursor: pointer;
+}

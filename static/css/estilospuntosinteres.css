@@ -55,7 +55,7 @@ body {
 }
 
 .index{
-    margin: 0 0 0 6px;
+    margin: 0 0 06px;
     font-size: 14px;
 }
 
@@ -91,7 +91,7 @@ body {
     padding: 14px 16px;
     border-bottom: 1px solid #e3e8f2;
     font-size: 14px;
-    line-height: 1;
+    line-height: 1,5;
 }
 
 .detail h3 {
