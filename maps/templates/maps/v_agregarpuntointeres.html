@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/estilospuntosinteres.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../PAGINA PRINCIPAL/safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
+    <title>Santiaguía</title>
+
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin="">
+
+    <style>
+        body { margin: 0; }
+        #map { height: 100%; width: 100%; }
+    </style>
+</head>
+
+<body>
+    {% include "cabeceraprincipal.html" %}
+
+    <h1 class="titulo">Agregar punto de interés</h1>
+
+    <div class="contenedor">
+        <div class="caja_medio">
+            <div class="mapa">
+                {% include "maps/plantillamapa.html" %}
+            </div>
+        </div>
+
+        <div class="caja_izq">
+            <div class="indice_izq">
+                <h2>Detalles</h2>
+            </div>
+
+            <div class="selecciones">
+                <h2 class="index">Nivel de riesgo</h2>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <label for="add_lugar_nombre">Nombre del lugar:</label><br>
+                    <input type="text" id="add_lugar_nombre" name="add_lugar_nombre" value="{{ form.add_lugar_nombre.value|default:'' }}"><br>
+                    {% if form.add_lugar_nombre.errors %}<div class="error">{{ form.add_lugar_nombre.errors }}</div>{% endif %}
+
+                    <label for="add_lugar_tipo">Tipo del lugar:</label><br>
+                    <select id="add_lugar_tipo" name="add_lugar_tipo">
+                        {% include "maps/opciones_tipos.html" %}
+                    </select><br>
+
+                    <label for="add_lugar_comuna">Comuna:</label><br>
+                    <select id="add_lugar_comuna" name="add_lugar_comuna">
+                        {% include "maps/opciones_comunas.html" %}
+                    </select><br>
+
+                    <label for="add_lugar_encontrar">Lo que se puede encontrar:</label><br>
+                    <input type="text" id="add_lugar_encontrar" name="add_lugar_encontrar" value="{{ form.add_lugar_encontrar.value|default:'' }}"><br>
+
+                    <label for="add_lugar_razon">¿Porqué visitar el lugar?:</label><br>
+                    <input type="text" id="add_lugar_razon" name="add_lugar_razon" value="{{ form.add_lugar_razon.value|default:'' }}"><br>
+
+                    <!-- Changed 'disabled' to 'readonly' so JavaScript can populate it and it successfully submits -->
+                    <label for="lat" id="lat_titulo">Latitud (Click en el mapa):</label><br>
+                    <input type="text" id="lat" name="lat" readonly value="{{ form.lat.value|default:'' }}"><br>
+                    
+                    <label for="lng" id="lng_titulo">Longitud (Click en el mapa):</label><br>
+                    <input type="text" id="lng" name="lng" readonly value="{{ form.lng.value|default:'' }}"><br>
+
+                    <br>
+                    <input type="submit" value="Submit"> 
+                </form>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+</html>

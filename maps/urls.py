@@ -6,4 +6,5 @@ app_name = "maps"
 urlpatterns = [
     path("mapa/puntosinteres", views.mapa_puntos_interes, name="puntosinteres"),
     path("mapa/riesgozonas", views.mapa_riesgo_zonas, name="riesgozonas"),
+    path("mapa/puntosinteres/agregar", views.agregar_punto_interes, name="puntosinteres_agregar"),
 ]
