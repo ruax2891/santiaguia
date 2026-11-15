@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
+from .forms import InterestLocationForm
+from .models import InterestLocation
 
 def mapa_puntos_interes(request):
     allParsedPlaces = []
@@ -9,7 +11,7 @@ def mapa_puntos_interes(request):
         parsedPlace = {
             "name": place.nombre,
             "comuna": place.comuna,
-            "type": place.tipo,
+            "tipo": place.tipo,
             "custom_relevantes": [place.encontrables],#place.location_things,
             "custom_razonvisita": [place.razonvisita], #place.location_name,
             "lat": place.latitud,
@@ -44,4 +46,22 @@ def agregar_punto_interes(request):
     places = []
     zones = []
 
-    return render(request, "maps/v_agregarpuntointeres.html", {"places": places, "zones": zones})
+    if request.method == 'POST':
+        form = InterestLocationForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            
+            InterestLocation.objects.create(
+                nombre=data['add_lugar_nombre'],
+                comuna=data['add_lugar_comuna'],
+                tipo=data['add_lugar_tipo'],
+                encontrables=data['add_lugar_encontrar'],
+                razonvisita=data['add_lugar_razon'],
+                latitud=data['lat'],
+                longitud=data['lng'],
+            )
+            return redirect('maps:puntosinteres')
+    else:
+        form = InterestLocationForm()
+
+    return render(request, 'maps/v_agregarpuntointeres.html', {'form': form, "places": places, "zones": zones})

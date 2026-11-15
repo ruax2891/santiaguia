@@ -41,28 +41,35 @@
             <div class="selecciones">
                 <h2 class="index">Nivel de riesgo</h2>
 
-                <form>
+                <form method="POST">
+                    {% csrf_token %}
+                    
                     <label for="add_lugar_nombre">Nombre del lugar:</label><br>
-                    <input type="text" id="add_lugar_nombre" name="add_lugar_nombre"><br>
+                    <input type="text" id="add_lugar_nombre" name="add_lugar_nombre" value="{{ form.add_lugar_nombre.value|default:'' }}"><br>
+                    {% if form.add_lugar_nombre.errors %}<div class="error">{{ form.add_lugar_nombre.errors }}</div>{% endif %}
 
                     <label for="add_lugar_tipo">Tipo del lugar:</label><br>
                     <select id="add_lugar_tipo" name="add_lugar_tipo">
-                        <option value="volvo">Universidad</option>
-                        <option value="saab">Recreativo</option>
-                        <option value="fiat">Comercio</option>
-                        <option value="audi">Cultural</option>
+                        {% include "maps/opciones_tipos.html" %}
+                    </select><br>
+
+                    <label for="add_lugar_comuna">Comuna:</label><br>
+                    <select id="add_lugar_comuna" name="add_lugar_comuna">
+                        {% include "maps/opciones_comunas.html" %}
                     </select><br>
 
                     <label for="add_lugar_encontrar">Lo que se puede encontrar:</label><br>
-                    <input type="text" id="add_lugar_encontrar" name="add_lugar_encontrar"><br>
+                    <input type="text" id="add_lugar_encontrar" name="add_lugar_encontrar" value="{{ form.add_lugar_encontrar.value|default:'' }}"><br>
 
                     <label for="add_lugar_razon">¿Porqué visitar el lugar?:</label><br>
-                    <input type="text" id="add_lugar_razon" name="add_lugar_razon"><br>
+                    <input type="text" id="add_lugar_razon" name="add_lugar_razon" value="{{ form.add_lugar_razon.value|default:'' }}"><br>
 
+                    <!-- Changed 'disabled' to 'readonly' so JavaScript can populate it and it successfully submits -->
                     <label for="lat" id="lat_titulo">Latitud (Click en el mapa):</label><br>
-                    <input type="text" id="lat" name="lat" disabled><br>
+                    <input type="text" id="lat" name="lat" readonly value="{{ form.lat.value|default:'' }}"><br>
+                    
                     <label for="lng" id="lng_titulo">Longitud (Click en el mapa):</label><br>
-                    <input type="text" id="lng" name="lng" disabled><br>
+                    <input type="text" id="lng" name="lng" readonly value="{{ form.lng.value|default:'' }}"><br>
 
                     <br>
                     <input type="submit" value="Submit"> 

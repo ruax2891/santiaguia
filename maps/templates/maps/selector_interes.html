@@ -8,18 +8,13 @@
 
         <select class="selector_comuna" id="selector_comuna">
             <option value="">Todas las comunas</option>
-            <option value="Santiago">Santiago</option>
-            <option value="Providencia">Providencia</option>
-            <option value="Puente Alto">Puente Alto</option>
+            {% include "maps/opciones_comunas.html" %}
         </select>
 
         <h2 class="index">Tipo de lugar</h2>
 
         <select class="selector_comuna" id="selector_tipo">
-            <option value="">Todos los tipos</option>
-            <option value="Universidad">Universidad</option>
-            <option value="Lugar tipo 2">Lugar tipo 2</option>
-            <option value="Lugar tipo 3">Lugar tipo 3</option>
+                {% include "maps/opciones_tipos.html" %}
         </select>
     </div>
 </div>
