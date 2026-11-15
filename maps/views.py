@@ -1,46 +1,25 @@
 from django.shortcuts import render
+from . import models
 
 def mapa_puntos_interes(request):
-    places = [
-        {
-            "name": "USM San Joaquin",
-            "comuna": "Santiago",
+    allParsedPlaces = []
 
-            "tipo": "Universidad",
-            "custom_relevantes": ["Patrimonios", "Edificios", "Biblioteca"],
-            "custom_razonvisita": ["Lugar de estudios", "Buena Universidad"],
+    placesInDb = models.InterestLocation.objects.all()
+    for place in placesInDb:
+        parsedPlace = {
+            "name": place.nombre,
+            "comuna": place.comuna,
+            "type": place.tipo,
+            "custom_relevantes": [place.encontrables],#place.location_things,
+            "custom_razonvisita": [place.razonvisita], #place.location_name,
+            "lat": place.latitud,
+            "lng": place.longitud,
+        }
 
-            "lat": -33.49089371165112,
-            "lng": -70.61913133268338,
-        },
-
-        {
-            "name": "Ubicacion 2 - Prueba",
-            "comuna": "Providencia",
-
-            "tipo": "Lugar tipo 2",
-            "custom_relevantes": ["Abc", "Def", "Ghi"],
-            "custom_razonvisita": ["Lugar de descanso", "Mala ubicacion"],
-
-            "lat": -33.5089381165112,
-            "lng": -70.61913143268338,
-        },
-
-        {
-            "name": "Ubicacion 3 - Prueba",
-            "comuna": "Puente Alto",
-
-            "tipo": "Lugar tipo 3",
-            "custom_relevantes": ["Patrimonios Mas o menos", "Edificios bajos", "Biblioteca estandar"],
-            "custom_razonvisita": ["Aire libre", "Razon 2"],
-
-            "lat": -33.52089371165112,
-            "lng": -70.62913133268338,
-        },
-    ]
+        allParsedPlaces.append(parsedPlace)
 
     zones = []
-    return render(request, "maps/v_puntosinteres.html", {"places": places, "zones": zones})
+    return render(request, "maps/v_puntosinteres.html", {"places": allParsedPlaces, "zones": zones})
 
 def mapa_riesgo_zonas(request):
     places = []
@@ -60,3 +39,9 @@ def mapa_riesgo_zonas(request):
         }
     ]
     return render(request, "maps/v_riesgozonas.html", {"places": places, "zones": zones})
+
+def agregar_punto_interes(request):
+    places = []
+    zones = []
+
+    return render(request, "maps/v_agregarpuntointeres.html", {"places": places, "zones": zones})
