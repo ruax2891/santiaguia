@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    min-height: 100vh;    
+    display: flex;     
+    flex-direction: column;
+    align-items: center;
+    background-image: url("../../static/images/Login\ Background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+.bloque-login {
+    width: 30vw;
+    background-color:#1c5799;
+    margin-top: 4vh;
+    color: #fff;
+    border-radius: 9px;
+    padding: 1.4vw;
+}
+
+h2 {
+    text-align: center;
+}
+
+.bloque-usuario label,
+.bloque-password label {
+    display: block;   
+    margin: 15px 3px ;
+    text-align: center;
+    font-size: 20px;
+}
+
+#id_password, #id_username {
+    padding: 10px 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+form button {
+    display: block;    
+    margin: auto; 
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 0.8vh 0.8vw;
+    font-size: 0.9em;
+}
+
+form button:active {
+    background-color: #bbb;
+}

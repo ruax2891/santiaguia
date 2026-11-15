@@ -4,46 +4,6 @@ body {
     
 }
 
-.header {
-    width: 100%;
-    background-color: #1c5799;
-}
-.navprincipal {
-    box-sizing: border-box;
-    position: relative;
-}
-
-.navprincipal h2 {
-    display: inline-block;
-    position: absolute;
-    left: 100px;
-    bottom: -5px;
-    color: #fff;
-}
-
-.nav1_list {
-    list-style: none;
-    margin: 0;
-    text-align: right;
-    margin-right: 40px;
-}
-
-.nav1_list_item {
-    display: inline-block;
-}
-
-.navprincipal a {
-    font-weight: 100;
-    color: #fff;
-    text-decoration: none;
-    display: inline-block;
-    padding: 18px;
-}
-
-.nav_links:hover {
-    background-color: #0c3789  ;
-}
-
 .titulo {
     margin: 25px 30px;
     margin-bottom: 50px;
