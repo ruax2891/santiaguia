@@ -1,0 +1,22 @@
+body{
+    background-color: #f4f6fb;
+    color: #3a4252;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+a{
+    color: #14437f;
+}
+
+.btn-primary,
+.btn-succes{
+    background-color: #14437f;
+    border-color: #14437f;
+}
+
+.btn-primary:hover,
+.btn-success:hover {
+	background-color: #0e3260;
+	border-color: #0e3260;
+}
+
