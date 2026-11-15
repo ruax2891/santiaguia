@@ -13,7 +13,9 @@ def index(request):
     if request.method == 'POST':
         if 'enviar' in request.POST:
             form = RespuestaForm(request.POST)
-            form.save()
+            if form.is_valid():
+                form.save()
+            
     return HttpResponse(template.render(contexto, request))
 
 def respuestas(request):

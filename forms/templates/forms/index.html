@@ -32,7 +32,7 @@
 			<section class="panel">
 				<h2 class="panel-titulo">Enviar un aporte</h2>
 
-				<form method="post" action="" class="formulario">
+				<form method="post" action="{% url 'forms:index' %}" class="formulario">
 					{% csrf_token%}
 					<p>
 						<label for="id_texto">Texto:</label>
@@ -41,6 +41,10 @@
 					<p>
 						<label for="id_email">Email:</label>
 						<input type="email" name="email" id="id_email">
+					</p>
+					<p>
+						<label for="id_fuentes">Fuentes:</label>
+						<textarea name="fuentes" id="id_fuentes" rows="3"></textarea>
 					</p>
 					<button name="enviar" class="boton">Enviar</button>
 				</form>
