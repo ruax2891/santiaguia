@@ -1,14 +1,55 @@
-<html>
-<head><title>Colaboración</title></head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/css/dise.css">
+	<title>Colaboración - Santiaguía</title>
+</head>
 <body>
+    {% include 'cabeceraprincipal.html' %}
 
-<h1>Colaboración</h1>
-<form method="post" action="{% url 'forms:index' %}">
-{% csrf_token %}
-{{ form }}
-<button name="enviar">Enviar</button>
-</form>
 
+	<main class="pagina">
+		<div class="pagina-titulo">
+			<h1>Colaboración</h1>
+			<p>¿Te gustaría aportar con información? Envíalo!</p>
+		</div>
+
+		<div class="pagina-layout">
+			<aside class="panel">
+				<div class="cuerpo">
+					<h2 class="panel-titulo">¿Qué puedes aportar?</h2>
+						<ul class="acordeon">
+							<strong><li>Lugares útiles que falten en el mapa.</li>
+							<li>Zonas que te parezcan inseguras.</li>
+							<li>Datos de transporte desactualizados.</li></strong>
+						</ul>
+				</div>
+			</aside>
+
+			<section class="panel">
+				<h2 class="panel-titulo">Enviar un aporte</h2>
+
+				<form method="post" action="{% url 'forms:index' %}" class="formulario">
+					{% csrf_token%}
+					<p>
+						<label for="id_texto">Texto:</label>
+						<textarea name="texto" id="id_texto" rows="6"></textarea>
+					</p>
+					<p>
+						<label for="id_email">Email:</label>
+						<input type="email" name="email" id="id_email">
+					</p>
+					<p>
+						<label for="id_fuentes">Fuentes:</label>
+						<textarea name="fuentes" id="id_fuentes" rows="3"></textarea>
+					</p>
+					<button name="enviar" class="boton">Enviar</button>
+				</form>
+			</section>
+		</div>
+	</main>
 <p><a href="{% url 'forms:respuestas' %}">Ver Respuestas</a></p>
 
 </body>

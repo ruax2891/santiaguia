@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/dise.css' %}">
+	<title>Metro - Transporte público - Santiaguía</title>
+</head>
+<body>
+
+	<header class="barra">
+		<div class="barra-marca">
+			<a href="{% url 'inicio' %}" class="logo">Santiaguía</a>
+		</div>
+		<nav>
+			<ul class="barra-menu">
+				<li><a href="{% url 'transporte_metro' %}" class="activo" aria-current="page">Transporte</a></li>
+
+			</ul>
+		</nav>
+	</header>
+
+	<main class="pagina">
+		<div class="pagina-titulo">
+			<h1>Documentación de transporte público</h1>
+			<p>Todo lo que necesitas para moverte por Santiago de forma simple y segura.</p>
+		</div>
+
+		<div class="pagina-layout transporte">
+
+			<aside class="panel">
+				<h2 class="panel-titulo">Secciones</h2>
+				<nav aria-label="Secciones de transporte">
+					<ul class="menu-secciones">
+						<li><a href="{% url 'transporte_metro' %}" class="activo" aria-current="page">Metro</a></li>
+						<li><a href="{% url 'transporte_buses' %}">Buses</a></li>
+						<li><a href="{% url 'transporte_bip' %}">Tarjeta Bip</a></li>
+						<li><a href="{% url 'transporte_tarifas' %}">Tarifas</a></li>
+					</ul>
+				</nav>
+			</aside>
+
+			<section class="panel">
+				<div class="acordeon">
+					<details>
+						<summary>Cómo pagar y usar el Metro</summary>
+						<div class="cuerpo">
+							<p>En el Metro se paga al entrar, apoyando la tarjeta sobre el lector del torniquete. Al salir no se paga de nuevo.</p>
+							<ul>
+								<li><strong>Tarjeta bip:</strong> es la forma habitual de pago. Sirve también en los buses Red y en el Metrotren Nos.</li>
+								<li><strong>TNE:</strong> si eres estudiante de educación superior, tu Tarjeta Nacional Estudiantil funciona como una bip y paga la tarifa rebajada.</li>
+								<li><strong>Tarjeta bancaria o celular:</strong> Metro permite pagar directamente con tarjeta de débito, crédito o prepago sin contacto, y con el celular, sin pasar por la boletería.</li>
+							</ul>
+							<p>La tarifa no depende de la distancia: cuesta lo mismo ir dos estaciones que cruzar la ciudad entera. Lo único que cambia el precio es la hora a la que entras.</p>
+							<p>Un mismo viaje admite hasta dos transbordos dentro de 2 horas, por lo que combinar Metro y bus no se cobra dos veces. El detalle está en la sección Tarifas.</p>
+						</div>
+
+					</details>
+					<details>
+						<summary>Líneas y combinaciones</summary>
+						<div class="cuerpo">
+							<p>La red tiene 7 líneas en servicio:</p>
+							<table>
+								<thead>
+									<tr><th>Línea</th><th>Color</th><th>Recorrido</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>Línea 1</td><td>Roja</td><td>San Pablo - Los Dominicos</td></tr>
+									<tr><td>Línea 2</td><td>Amarilla</td><td>Hospital El Pino - Vespucio Norte</td></tr>
+									<tr><td>Línea 3</td><td>Café</td><td>Fernando Castillo Velasco - Plaza Quilicura</td></tr>
+									<tr><td>Línea 4</td><td>Azul</td><td>Tobalaba - Plaza de Puente Alto</td></tr>
+									<tr><td>Línea 4A</td><td>Celeste</td><td>Vicuña Mackenna - La Cisterna</td></tr>
+									<tr><td>Línea 5</td><td>Verde</td><td>Plaza de Maipú - Vicente Valdés</td></tr>
+									<tr><td>Línea 6</td><td>Morada</td><td>Cerrillos - Los Leones</td></tr>
+								</tbody>
+							</table>
+							<p><strong>Estaciones de combinación</strong>, donde puedes cambiar de línea sin salir ni volver a pagar:</p>
+							<ul>
+								<li><strong>Línea 1:</strong> Los Héroes (L2), Universidad de Chile (L3), Baquedano (L5), Los Leones (L6), Tobalaba (L4).</li>
+								<li><strong>Línea 2:</strong> Los Héroes (L1), Santa Ana (L5), Puente Cal y Canto (L3), Franklin (L6), La Cisterna (L4A).</li>
+								<li><strong>Línea 3:</strong> Universidad de Chile (L1), Puente Cal y Canto (L2), Plaza de Armas (L5), Irarrázaval (L5), Plaza Egaña (L4), Ñuñoa (L6).</li>
+								<li><strong>Línea 4:</strong> Tobalaba (L1), Plaza Egaña (L3), Vicente Valdés (L5), Vicuña Mackenna (L4A).</li>
+								<li><strong>Línea 5:</strong> Baquedano (L1), Santa Ana (L2), Plaza de Armas (L3), Irarrázaval (L3), Ñuble (L6), Vicente Valdés (L4).</li>
+								<li><strong>Línea 6:</strong> Los Leones (L1), Franklin (L2), Ñuñoa (L3), Ñuble (L5).</li>
+							</ul>
+							
+						</div>
+					</details>
+					<details>
+						<summary>Tarifas y horarios</summary>
+						<div class="cuerpo">
+							<p><strong>Horario de funcionamiento</strong></p>
+							<table>
+								<thead>
+									<tr><th>Día</th><th>Apertura</th><th>Cierre</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>Lunes a viernes</td><td>6:00</td><td>23:00</td></tr>
+									<tr><td>Sábado</td><td>6:30</td><td>23:00</td></tr>
+									<tr><td>Domingo y festivos</td><td>7:30</td><td>23:00</td></tr>
+								</tbody>
+							</table>
+							<p class="nota">Si entras muy cerca de la hora de cierre puedes quedarte sin alcanzar alguna combinación, porque las líneas no terminan todas a la misma hora. Las boleterías atienden en el mismo horario, salvo domingos y festivos, cuando cierran a las 22:30.</p>
+							<p class="nota">Por eventos especiales el horario se puede extender.</p>
+							<p><strong>Tarifas de lunes a viernes</strong></p>
+							<table>
+								<thead>
+									<tr><th>Horario</th><th>Tramos</th><th>Metro</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>Punta</td><td>07:00 - 08:59 y 18:00 - 19:59</td><td>$895</td></tr>
+									<tr><td>Valle</td><td>09:00 - 17:59 y 20:00 - 20:44</td><td>$815</td></tr>
+									<tr><td>Bajo</td><td>06:00 - 06:59 y 20:45 - 23:00</td><td>$735</td></tr>
+								</tbody>
+							</table>
+							<p>Sábados, domingos y festivos la tarifa es $815 durante todo el día.</p>
+							<p>Con TNE, la tarifa de estudiante es de $260 a cualquier hora y cualquier día del año.</p>
+						</div>
+					</details>
+					<details>
+						<summary>Consejos para foráneos</summary>
+						<div class="cuerpo">
+							<ul>
+								<li>Siempre cuida tus pertenencia y no llevas la mochila puesta.</li>
+								<li>Espera detrás de la línea amarilla y deja salir primero a quienes bajan.</li>
+								<li>En las escaleras mecánicas párate al lado derecho y deja libre el izquierdo para quienes caminan.</li>
+								<li>Antes de salir, mira en el mapa de la estación qué salida te deja más cerca de tu destino.</li>
+							</ul>
+						</div>
+					</details>
+				</div>
+
+				<a href="{% static 'images/transporte/mapametro.jpg' %}" target="_blank" rel="noopener">
+					<img class="mapa-metro" src="{% static 'images/transporte/mapametro.jpg' %}" alt="Mapa de la red de Metro de Santiago">
+				</a>
+				<p class="nota-actualizacion">
+					Tarifas y horarios tomados de
+					<a href="https://www.metro.cl/el-viaje/horarios-y-tarifas" target="_blank" rel="noopener">Metro de Santiago</a> y
+					<a href="https://www.red.cl/tarifas-y-recargas/conoce-las-tarifas/" target="_blank" rel="noopener">Red Movilidad</a>.
+					Pueden cambiar sin aviso: ante cualquier duda, revisa esos sitios antes de viajar.
+				</p>
+			</section>
+			<aside class="panel fotos">
+				<img src="{% static 'images/transporte/tren.jpg' %}" alt="Tren del Metro de Santiago">
+				<img src="{% static 'images/transporte/micro2.jpg' %}" alt="Micro del transporte público de Santiago">
+			</aside>
+		</div>
+	</main>
+</body>
+</html>

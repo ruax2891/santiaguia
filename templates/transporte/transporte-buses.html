@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/dise.css' %}">
+	<title>Buses - Transporte público - Santiaguía</title>
+</head>
+<body>
+
+	<header class="barra">
+		<div class="barra-marca">
+			<a href="{% url 'inicio' %}" class="logo">Santiaguía</a>
+		</div>
+		<nav>
+			<ul class="barra-menu">
+				<li><a href="{% url 'transporte_metro' %}" class="activo" aria-current="page">Transporte</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="pagina">
+		<div class="pagina-titulo">
+			<h1>Documentación de transporte público</h1>
+			<p>Todo lo que necesitas para moverte por Santiago de forma simple y segura.</p>
+		</div>
+
+		<div class="pagina-layout transporte">
+
+			<aside class="panel">
+				<h2 class="panel-titulo">Secciones</h2>
+				<nav aria-label="Secciones de transporte">
+					<ul class="menu-secciones">
+						<li><a href="{% url 'transporte_metro' %}">Metro</a></li>
+						<li><a href="{% url 'transporte_buses' %}" class="activo" aria-current="page">Buses</a></li>
+						<li><a href="{% url 'transporte_bip' %}">Tarjeta Bip</a></li>
+						<li><a href="{% url 'transporte_tarifas' %}">Tarifas</a></li>
+					</ul>
+				</nav>
+			</aside>
+
+			<section class="panel">
+				<div class="acordeon">
+					<details>
+						<summary>Cómo usar los buses</summary>
+						<div class="cuerpo">
+							<p>Los buses de Santiago se llaman micros y forman la red Red Movilidad, de color blanco con verde, rojo, azul o amarillo según la zona.</p>
+							<ul>
+								<li><strong>Hay que hacerle señas al bus.</strong> No se detiene solo: estira el brazo cuando lo veas acercarse a tu paradero.</li>
+								<li><strong>Se sube por la puerta delantera</strong> y se paga apoyando la bip en el validador, junto al conductor.</li>
+								<li><strong>La tarifa es la misma todo el día:</strong> $795, sin horario punta ni valle, a diferencia del Metro.</li>
+								<li><strong>Para bajarte</strong> toca el timbre antes de llegar al paradero.</li>
+							</ul>
+							<p>Con la tarifa integrada tienes hasta dos transbordos sin costo extra dentro de 2 horas desde que empezaste el viaje, siempre que no repitas el mismo recorrido.</p>
+							<p>Si te quedaste sin saldo, el viaje de emergencia te permite subirte igual al bus: lo que debes se descuenta en tu próxima carga. Solo funciona en buses, las 24 horas, y se habilita desde la segunda carga de tu tarjeta.</p>
+						</div>
+
+					</details>
+					<details>
+						<summary>Recorridos y paraderos</summary>
+						<div class="cuerpo">
+							<p><strong>Cómo leer el número del recorrido</strong></p>
+							<ul>
+								<li><strong>Recorridos troncales:</strong> números de tres cifras (por ejemplo, 210). Son los que cruzan la ciudad por los ejes principales.</li>
+								<li><strong>Recorridos locales:</strong> una letra seguida de dos números (por ejemplo, B16 o J12). La letra identifica la zona de la ciudad donde circulan.</li>
+							</ul>
+							<p>Al final del número puede aparecer otra letra, que cambia el trazado:</p>
+							<table>
+								<thead>
+									<tr><th>Letra</th><th>Significa</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>e</td><td>Expreso: hace menos paradas.</td></tr>
+									<tr><td>c</td><td>Corto: recorre solo una parte del trazado.</td></tr>
+									<tr><td>v</td><td>Variante: sigue un camino distinto al original.</td></tr>
+									<tr><td>n</td><td>Nocturno.</td></tr>
+								</tbody>
+							</table>
+							<p>Cada paradero tiene un código impreso en el letrero. Con ese código puedes consultar qué buses vienen y en cuántos minutos, desde la app de Red o desde el sitio de Red Movilidad.</p>
+							<p>Para planificar un viaje completo sirven el planificador de <a href="https://www.red.cl/planifica" target="_blank" rel="noopener">red.cl</a>, la app de Red Movilidad y también Google Maps o Moovit.</p>
+						</div>
+					</details>
+					<details>
+						<summary>Horarios y frecuencias</summary>
+						<div class="cuerpo">
+							<p><strong>Servicio de día.</strong> La mayoría de los recorridos funciona aproximadamente entre las 05:30 y las 23:30, pero cada uno tiene su propio horario de primera y última salida. El horario exacto de tu recorrido se consulta en el detalle de recorridos de <a href="https://www.red.cl/planifica" target="_blank" rel="noopener">red.cl</a> o en la app.</p>
+							<p><strong>Frecuencia.</strong> Varía mucho según el recorrido y la hora: en horario punta pasan cada pocos minutos y de noche pueden tardar bastante más. La app muestra el tiempo real de llegada, que es más confiable que cualquier horario publicado.</p>
+							<p><strong>Red nocturna.</strong> Cuando el Metro ya cerró, sigue funcionando la malla nocturna de buses:</p>
+							<ul>
+								<li>Algunos recorridos operan las 24 horas y otros solo entre la 01:00 y las 05:30.</li>
+								<li>Conectan las comunas más alejadas con el centro, pasando por sectores como Providencia, Plaza Italia, la Alameda, Irarrázaval y Bellavista.</li>
+								<li>Entre las 00:00 y las 05:00, en los recorridos de la malla nocturna puedes pedirle al conductor que te deje en el punto más cercano a tu destino, aunque no sea un paradero oficial. Es una medida de seguridad para acortar el tramo a pie, y solo sirve para bajarse, no para subirse.</li>
+							</ul>
+						</div>
+					</details>
+					<details>
+						<summary>Consejos para foráneos</summary>
+						<div class="cuerpo">
+							<ul>
+								<li>Descarga una app de transporte (Red Movilidad, Moovit o Google Maps) para ver qué micro pasa y cuánto falta.</li>
+								<li>Pide la parada con el timbre con anticipación, porque la micro no siempre se detiene si nadie baja ni sube.</li>
+								<li>Si el bus va lleno, sujétate bien y evita sacar el celular junto a las puertas.</li>	
+							</ul>
+						</div>
+					</details>
+				</div>
+				<p class="nota-actualizacion">
+					Tarifas y horarios tomados de
+					<a href="https://www.metro.cl/el-viaje/horarios-y-tarifas" target="_blank" rel="noopener">Metro de Santiago</a> y
+					<a href="https://www.red.cl/tarifas-y-recargas/conoce-las-tarifas/" target="_blank" rel="noopener">Red Movilidad</a>.
+					Pueden cambiar sin aviso: ante cualquier duda, revisa esos sitios antes de viajar.
+				</p>
+
+			</section>
+
+			<aside class="panel fotos">
+				<img src="{% static 'images/transporte/micro.jpeg' %}" alt="Micro 1">
+				<img src="{% static 'images/transporte/micro2.jpg' %}" alt="Micro 2">
+			</aside>
+
+		</div>
+	</main>
+
+</body>
+</html>
