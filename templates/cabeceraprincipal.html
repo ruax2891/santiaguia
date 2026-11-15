@@ -25,3 +25,15 @@
         </ul>
     </nav>
 </header>
+<script>
+    const botonCuenta = document.getElementById("botonCuenta");
+    const menuCuenta = document.getElementById("menuCuenta");
+    botonCuenta.addEventListener("click", function () {
+        menuCuenta.classList.toggle("mostrar");
+    });
+    window.addEventListener("click", function (evento) {
+        if (!botonCuenta.contains(evento.target) && !menuCuenta.contains(evento.target)) {
+            menuCuenta.classList.remove("mostrar");
+        }
+    });
+</script>
