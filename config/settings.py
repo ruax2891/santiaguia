@@ -44,6 +44,8 @@ WIKI_ANONYMOUS_WRITE = False
 #        return True
 #    else:
 #        return False
+
+
 # Application definition
 
 INSTALLED_APPS = [
