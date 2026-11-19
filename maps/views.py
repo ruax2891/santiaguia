@@ -29,6 +29,8 @@ def mapa_puntos_interes(request):
     return render(request, "maps/v_puntosinteres.html", {"places": allParsedPlaces, "zones": zones, "is_curator": is_curator})
 
 def mapa_riesgo_zonas(request):
+    raise PermissionDenied()
+
     places = []
     zones = [
         {

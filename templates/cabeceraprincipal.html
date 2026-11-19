@@ -19,7 +19,7 @@
                 </ul>
             </li>
             <li class="nav1_list_item"><a href="{% url 'maps:puntosinteres' %}" class="nav_links"><i class="fa fa-map-marker"></i> Puntos Interes</a></li>
-            <li class="nav1_list_item"><a href="{% url 'maps:riesgozonas' %}" class="nav_links"><i class="fa fa-map"></i> Zonas</a></li>
+            <!-- <li class="nav1_list_item"><a href="{% url 'maps:riesgozonas' %}" class="nav_links"><i class="fa fa-map"></i> Zonas</a></li> -->
             <li class="nav1_list_item"><a href="{% url 'forms:index' %}" class="nav_links"><i class="fa fa-users"></i> Contribuciones</a></li>
             {% if perms.forms.view_respuesta %}
                 <li class="nav1_list_item"><a href="{% url 'forms:respuestas' %}" class="nav_links"><i class="fa fa-check-square" aria-hidden="true"></i> Respuestas</a></li>
