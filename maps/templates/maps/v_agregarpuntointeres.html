@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'css/estilospuntosinteres.css' %}">
+    <link rel="stylesheet" href="{% static 'css/estilosagregarpuntosinteres.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../PAGINA PRINCIPAL/safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
+    <link rel="icon" href="{% static 'images/LOGO SANTIAGUÍA chikito.png' %}" type="image/png">
     <title>Santiaguía</title>
 
     <link rel="stylesheet"
@@ -24,7 +24,9 @@
 <body>
     {% include "cabeceraprincipal.html" %}
 
-    <h1 class="titulo">Agregar punto de interés</h1>
+    <div class="barra-titulo">
+        <h1 class="titulo">Agregar punto de interés</h1>
+    </div>
 
     <div class="contenedor">
         <div class="caja_medio">
@@ -33,51 +35,50 @@
             </div>
         </div>
 
-        <div class="caja_izq">
-            <div class="indice_izq">
+        <div class="caja_der">
+            <div class="indice_der">
                 <h2>Detalles</h2>
             </div>
 
             <div class="selecciones">
-                <h2 class="index">Nivel de riesgo</h2>
-
-                <form method="POST">
+                <form method="POST" class="caja_formulario">
                     {% csrf_token %}
-                    
-                    <label for="add_lugar_nombre">Nombre del lugar:</label><br>
-                    <input type="text" id="add_lugar_nombre" name="add_lugar_nombre" value="{{ form.add_lugar_nombre.value|default:'' }}"><br>
-                    {% if form.add_lugar_nombre.errors %}<div class="error">{{ form.add_lugar_nombre.errors }}</div>{% endif %}
-
-                    <label for="add_lugar_tipo">Tipo del lugar:</label><br>
-                    <select id="add_lugar_tipo" name="add_lugar_tipo">
-                        {% include "maps/opciones_tipos.html" %}
-                    </select><br>
-
-                    <label for="add_lugar_comuna">Comuna:</label><br>
-                    <select id="add_lugar_comuna" name="add_lugar_comuna">
-                        {% include "maps/opciones_comunas.html" %}
-                    </select><br>
-
-                    <label for="add_lugar_encontrar">Lo que se puede encontrar:</label><br>
-                    <input type="text" id="add_lugar_encontrar" name="add_lugar_encontrar" value="{{ form.add_lugar_encontrar.value|default:'' }}"><br>
-
-                    <label for="add_lugar_razon">¿Porqué visitar el lugar?:</label><br>
-                    <input type="text" id="add_lugar_razon" name="add_lugar_razon" value="{{ form.add_lugar_razon.value|default:'' }}"><br>
-
-                    <!-- Changed 'disabled' to 'readonly' so JavaScript can populate it and it successfully submits -->
-                    <label for="lat" id="lat_titulo">Latitud (Click en el mapa):</label><br>
-                    <input type="text" id="lat" name="lat" readonly value="{{ form.lat.value|default:'' }}"><br>
-                    
-                    <label for="lng" id="lng_titulo">Longitud (Click en el mapa):</label><br>
-                    <input type="text" id="lng" name="lng" readonly value="{{ form.lng.value|default:'' }}"><br>
-
-                    <br>
-                    <input type="submit" value="Submit"> 
+                    <div class="bloque_nombre">
+                        <label for="add_lugar_nombre">Nombre del lugar:</label>
+                        <input type="text" id="add_lugar_nombre" name="add_lugar_nombre" value="{{ form.add_lugar_nombre.value|default:'' }}">
+                        {% if form.add_lugar_nombre.errors %}<div class="error">{{ form.add_lugar_nombre.errors }}</div>{% endif %}
+                    </div>
+                    <div class="bloque_lugar">
+                        <label for="add_lugar_tipo">Tipo del lugar:</label>
+                        <select id="add_lugar_tipo" name="add_lugar_tipo">
+                            {% include "maps/opciones_tipos.html" %}
+                        </select>
+                    </div>
+                    <div class="bloque_comuna"> 
+                        <label for="add_lugar_comuna">Comuna:</label>
+                        <select id="add_lugar_comuna" name="add_lugar_comuna">
+                            {% include "maps/opciones_comunas.html" %}
+                        </select>
+                    </div>
+                    <div class="bloque_lugar_encontrar"> 
+                        <label for="add_lugar_encontrar">Lo que se puede encontrar:</label>
+                        <input type="text" id="add_lugar_encontrar" name="add_lugar_encontrar" value="{{ form.add_lugar_encontrar.value|default:'' }}"><br>
+    
+                        <label for="add_lugar_razon">¿Porqué visitar el lugar?:</label>
+                        <input type="text" id="add_lugar_razon" name="add_lugar_razon" value="{{ form.add_lugar_razon.value|default:'' }}">
+                    </div>
+                    <div class="bloque_lugar_encontrar"> 
+                        <!-- Changed 'disabled' to 'readonly' so JavaScript can populate it and it successfully submits -->
+                        <label for="lat" id="lat_titulo">Latitud (Click en el mapa):</label>
+                        <input type="text" id="lat" name="lat" readonly value="{{ form.lat.value|default:'' }}">
+                        
+                        <label for="lng" id="lng_titulo">Longitud (Click en el mapa):</label>
+                        <input type="text" id="lng" name="lng" readonly value="{{ form.lng.value|default:'' }}">
+                    </div>    
+                    <input class='boton_enviar'type="submit" value="Enviar"> 
                 </form>
             </div>
         </div>
-    </div>
-
-    
+    </div>    
 </body>
 </html>
