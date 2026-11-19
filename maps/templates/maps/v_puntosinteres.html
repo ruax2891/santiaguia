@@ -26,7 +26,10 @@
 
     <div class="barra-titulo">
         <h1 class="titulo">Mapa de puntos de interés</h1>
-        <a href="{% url 'maps:puntosinteres_agregar' %}" class="boton_agregar_punto">Agregar punto</a>
+        
+        {% if is_curator %}
+            <a href="{% url 'maps:puntosinteres_agregar' %}" class="boton_agregar_punto">Agregar punto</a>
+        {% endif %}
     </div>
 
     <div class="contenedor">

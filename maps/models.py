@@ -10,3 +10,6 @@ class InterestLocation(models.Model):
 
     latitud = models.FloatField(default=-33.5)
     longitud = models.FloatField(default=-70.5)
+
+    class Meta:
+        permissions = (("can_create_location", "Create a new interest location"),)

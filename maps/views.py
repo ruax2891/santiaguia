@@ -2,11 +2,14 @@ from django.shortcuts import render, redirect
 from . import models
 from .forms import InterestLocationForm
 from .models import InterestLocation
+from django.core.exceptions import PermissionDenied, ValidationError
 
 def mapa_puntos_interes(request):
     allParsedPlaces = []
 
+    zones = []
     placesInDb = models.InterestLocation.objects.all()
+
     for place in placesInDb:
         parsedPlace = {
             "name": place.nombre,
@@ -20,8 +23,10 @@ def mapa_puntos_interes(request):
 
         allParsedPlaces.append(parsedPlace)
 
-    zones = []
-    return render(request, "maps/v_puntosinteres.html", {"places": allParsedPlaces, "zones": zones})
+    usuario = request.user
+    is_curator = usuario.is_authenticated and usuario.has_perm('maps.can_create_location')
+
+    return render(request, "maps/v_puntosinteres.html", {"places": allParsedPlaces, "zones": zones, "is_curator": is_curator})
 
 def mapa_riesgo_zonas(request):
     places = []
@@ -64,4 +69,10 @@ def agregar_punto_interes(request):
     else:
         form = InterestLocationForm()
 
-    return render(request, 'maps/v_agregarpuntointeres.html', {'form': form, "places": places, "zones": zones})
+    usuario = request.user
+    is_curator = usuario.is_authenticated and usuario.has_perm('maps.can_create_location')
+
+    if not is_curator:
+        raise PermissionDenied()
+
+    return render(request, 'maps/v_agregarpuntointeres.html', {'form': form, "places": places, "zones": zones, "is_curator": is_curator})
