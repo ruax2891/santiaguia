@@ -24,35 +24,36 @@
     <div class="cajaopciones">
         <div class="opciones opcion1">
             <div class="imagenop">
+                <img src="{% static 'images/thumb-wiki.png' %}" alt="Mapa de riesgo" style="object-position: center center; object-fit: contain;">
             </div>
             <div class="caja_titulo_op"> 
-                <h2>Mapa de riesgo</h2>
-                <p>Busca que tan segura es la zona donde vas</p>
-                <a href="{% url 'maps:riesgozonas' %}">  
-                <button class="btn-ver-mapa">Ver mapa</button>
+                <h2>Wiki</h2>
+                <p>Encuentra toda la información recopilada aquí.</p>
+                <a href="{% url 'wiki:get' '' %}">  
+                <button class="btn-ver-mapa">Ver Wiki</button>
                 </a>
             </div>
         </div>
         <div class="opciones opcion2">
             <div class="imagenop">
-                <img src="{% static 'images/imgpruebaportada.jpg' %}" alt="Mapa de riesgo">
+                <img src="{% static 'images/thumb-transporte.jpg' %}" alt="Mapa de riesgo">
             </div>
             <div class="caja_titulo_op">
                 <h2>Transporte público</h2>
-                <p>Conoce como moverte por la ciudad</p>
+                <p>Conoce como moverte por la ciudad.</p>
                 <a href="{% url 'transporte_metro' %}">
-                <button class="btn-ver-mapa">Ver transporte</button>
+                <button class="btn-ver-mapa">Ver Transporte</button>
                 </a>
             </div>
         </div>
         <div class="opciones opcion3">
             <div class="imagenop">
-                <img src="{% static 'images/imgpruebaportada2.png' %}" alt="colaboracion" style="object-position: center top;">
+                <img src="{% static 'images/thumb-colaboracion.png' %}" alt="colaboracion" style="object-position: center center;">
             </div>
             <div class="caja_titulo_op"> 
-                <h2>Sistema colaboración</h2>
+                <h2>Colaboración</h2>
+                <p>Falta información? ¡Comparte tu aporte!</p>
                 <a href="{% url 'forms:index' %}">
-                <p>Falta información? comparte tu aporte</p>
                 <button class="btn-ver-mapa">Colaborar</button>
                 </a>
             </div>
