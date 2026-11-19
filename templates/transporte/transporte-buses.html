@@ -9,16 +9,7 @@
 </head>
 <body>
 
-	<header class="barra">
-		<div class="barra-marca">
-			<a href="{% url 'inicio' %}" class="logo">Santiaguía</a>
-		</div>
-		<nav>
-			<ul class="barra-menu">
-				<li><a href="{% url 'transporte_metro' %}" class="activo" aria-current="page">Transporte</a></li>
-			</ul>
-		</nav>
-	</header>
+	{% include 'cabeceraprincipal.html' %}
 
 	<main class="pagina">
 		<div class="pagina-titulo">
@@ -121,6 +112,6 @@
 
 		</div>
 	</main>
-
+	{% include 'pie.html' %}
 </body>
 </html>
