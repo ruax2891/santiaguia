@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ValidationError
 
 from .models import Pregunta, Respuesta
 from .forms import RespuestaForm
@@ -12,10 +12,16 @@ def index(request):
     template = loader.get_template("forms/index.html")
     contexto = {"form": form}
     if request.method == 'POST':
-        if 'enviar' in request.POST:
+        if 'texto' in request.POST:
             form = RespuestaForm(request.POST)
             if form.is_valid():
                 form.save()
+            else:
+               raise ValidationError(
+               ("Invalid value: %(value)s"),
+               code="invalid",
+               params={"value": form.fields['email']},
+               )
             
     return HttpResponse(template.render(contexto, request))
 

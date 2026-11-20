@@ -5,7 +5,6 @@
 *.pot
 *.pyc
 *.sqlite3
-migrations/
 __pycache__/
 local_settings.py
 db.sqlite3 # comentar para trabajar con una sola base de datos!

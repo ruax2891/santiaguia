@@ -13,7 +13,7 @@ const centro_santiago = [-33.44464250806337, -70.65612825784866]
 const map = L.map("map").setView(centro_santiago, 12);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    maxZoom: 15,
+    maxZoom: 17,
     referrerPolicy: "strict-origin-when-cross-origin",
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
@@ -35,6 +35,11 @@ marcadoresRegistrados = []
 
 var comuna_seleccionada = ""
 var tipo_seleccionado = ""
+
+function crearMarcador(latitud, longitud) {
+    newMarker = L.marker([latitud, longitud], {icon: defaultPin(1.5, 'crimson')}).addTo(map)
+    return newMarker
+}
 
 function actualizarVisibilidadMarcador(elemento) {
     pertenece_a_comuna = (comuna_seleccionada == "" || elemento.data.comuna == comuna_seleccionada)
@@ -78,7 +83,8 @@ if (selector_tipo != null) {
 // Registra todos los puntos de interes en el mapa
 const places = JSON.parse(document.getElementById("places-data").textContent);
 places.forEach(p => {
-    newMarker = L.marker([p.lat, p.lng], {icon: defaultPin(1.5, 'crimson')}).addTo(map) // .bindPopup(p.name);
+    newMarker = crearMarcador(p.lat, p.lng)
+    newMarker.addTo(map)
 
     marcadoresRegistrados.push({data: p, instance: newMarker});
 
@@ -86,6 +92,7 @@ places.forEach(p => {
         document.getElementById("TituloZona").innerHTML = "Detalles del punto seleccionado"
         document.getElementById("EtiquetaNombreZona").innerHTML = "Zona: " + p.name
         document.getElementById("EtiquetaTipoZona").innerHTML = "Tipo: " + p.tipo
+        document.getElementById("EtiquetaComunaZona").innerHTML = "Comuna: " + p.comuna
 
         textoFinalRelevantes = ""
         console.log(p, p.custom_relevantes)
@@ -109,7 +116,7 @@ places.forEach(p => {
 
 // Registra todas las zonas en el mapa
 const zones = JSON.parse(document.getElementById("zones-data").textContent);
-console.log(zones)
+// console.log(zones)
 zones.forEach(p => {
     newPolygon = L.polygon(p.points).addTo(map)
 
@@ -137,8 +144,28 @@ zones.forEach(p => {
 
 
 // Debug
+marcadorActual = null
+
 map.on("click", e => {
-    console.log("Map clicked:", e.latlng.lat, e.latlng.lng);
+    latitud = e.latlng.lat
+    longitud = e.latlng.lng
+
+    latTextBox = document.getElementById("lat")
+    lngTextBox = document.getElementById("lng")
+    if (latTextBox && lngTextBox) {
+        latTextBox.value = e.latlng.lat
+        lngTextBox.value = e.latlng.lng
+
+        if (marcadorActual) {
+            map.removeLayer(marcadorActual)
+            marcadorActual = null
+        }
+
+        document.getElementById("lat_titulo").innerHTML = "Latitud:"
+        document.getElementById("lng_titulo").innerHTML = "Longitud:"
+
+        marcadorActual = crearMarcador(latitud, longitud)
+    }
 });
 
 

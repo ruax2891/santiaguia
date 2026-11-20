@@ -30,8 +30,8 @@ ALLOWED_HOSTS = []
 # SITE ID -- wiki
 SITE_ID = 1
 # WIKI SETTINGS
-WIKI_ACCOUNT_HANDLING = True
-WIKI_ACCOUNT_SIGNUP_ALLOWED = True
+WIKI_ACCOUNT_HANDLING = False
+WIKI_ACCOUNT_SIGNUP_ALLOWED = False
 from django.urls import reverse_lazy
 #LOGIN_REDIRECT_URL = reverse_lazy('wiki:get', kwargs={'path': ''})
 LOGIN_REDIRECT_URL = "inicio"
@@ -44,6 +44,8 @@ WIKI_ANONYMOUS_WRITE = False
 #        return True
 #    else:
 #        return False
+
+
 # Application definition
 
 INSTALLED_APPS = [

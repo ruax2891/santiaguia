@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    
+}
+
+.barra-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 32px 0;
+    gap: 16px;
+}
+
+.titulo {
+    margin: 0;
+    font-size: 2em;
+    color: #14437f;
+}
+
+#add_lugar_nombre, 
+#add_lugar_tipo,
+#add_lugar_comuna,
+#add_lugar_encontrar,
+#add_lugar_razon {
+    padding: 10px 12px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 80%;
+}
+
+.bloque_nombre label,
+.bloque_lugar label,
+.bloque_comuna label,
+.bloque_lugar_encontrar label {
+    display: block;   
+    margin: 10px 3px ;
+    font-size: 15px;
+}
+
+/*filt/map/det*/
+.contenedor {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr) 300px;
+    gap: 20px;
+    box-sizing: border-box;
+    height: calc(100vh - 126px);
+    min-height: 560px;
+    padding: 24px 32px 32px;
+}
+
+
+.caja_izq,
+.caja_medio,
+.caja_der {
+    min-width: 0;
+    min-height: 0;
+    background: white;
+    border-radius: 10px;
+    overflow: visible;
+}
+
+.boton_enviar {
+    display: block;    
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 0.8vh 0.8vw;
+    font-size: 0.9em;
+}
+
+.boton_enviar:active {
+    background-color: #bbb;
+}
+
+/* titulo contenedor */
+.indice_izq h2,
+.indice_der h2 {
+    margin: 0;
+    padding: 12px 16px;
+    background: #14437f;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+/*filrto*/
+.selecciones{
+    padding: 16px;
+}
+
+.index{
+    margin: 0 0 06px;
+    font-size: 14px;
+}
+
+/*mapa en posicion (no tocar o explota)*/
+.caja_medio {
+    position: relative;
+}
+
+.mapa {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/*detalles zon*/
+.detail{
+    padding: 14px 16px;
+    border-bottom: 1px solid #e3e8f2;
+    font-size: 14px;
+    line-height: 1,5;
+}
+
+.detail h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #14437f;
+}
+
+/* tablet y celular: una columna, mapa arriba */
+@media (max-width: 1000px) {
+    .contenedor {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .caja_medio {
+        order: -1;
+        height: 60vh;
+        min-height: 360px;
+    }
+}

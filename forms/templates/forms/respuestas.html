@@ -1,22 +1,33 @@
-<html>
-<head><title>Respuestas</title></head>
-<body>
-<h1>Respuestas de Colaboración</h1>
-<table>
+{% load static %}
 
-<tr><th>Correo</th><th>Texto</th><th>Fuentes</th></tr>
-<tr>
-{% for field in form %}
-    <td>{{ field }}</td>
-{% endfor %}
-</tr>
-{% for respuesta in respuestas %}
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/respuestas.css' %}">
+	<link rel="icon" href="{% static 'images/LOGO SANTIAGUÍA chikito.png' %}" type="image/png">
+	<title>Respuestas</title>
+</head>
+<body>
+    {% include "cabeceraprincipal.html" %}
+
+    <div class="caja_titulo">
+        <h1>Respuestas de Colaboración</h1>
+    </div>
+    <table>
+    <tr><th>Correo</th><th>Texto</th><th>Fuentes</th></tr>
     <tr>
-        <td>{{ respuesta.email }}</td>
-        <td>{{ respuesta.texto }}</td>
-        <td>{{ respuesta.fuentes }}</td>
+    {% for field in form %}
+        <td>{{ field }}</td>
+    {% endfor %}
     </tr>
-{% endfor %}
-</table>
+    {% for respuesta in respuestas %}
+        <tr>
+            <td>{{ respuesta.email }}</td>
+            <td>{{ respuesta.texto }}</td>
+            <td>{{ respuesta.fuentes }}</td>
+        </tr>
+    {% endfor %}
+    </table>
 </body>
 </html>

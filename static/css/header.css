@@ -57,6 +57,7 @@
     padding: 18px;
     display: inline-block;
     cursor: pointer;
+    z-index: 100;
 }
 
 .boton-cuenta:hover {

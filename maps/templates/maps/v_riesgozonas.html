@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../PAGINA PRINCIPAL/safeimagekit-LOGO SANTIAGUÍA.png" type="image/png">
+    <link rel="icon" href="{% static 'images/LOGO SANTIAGUÍA chikito.png' %}" type="image/png">
     <title>Santiaguía</title>
 
     <link rel="stylesheet"
@@ -23,9 +23,9 @@
 
 <body>
     {% include "cabeceraprincipal.html" %}
-
-    <h1 class="titulo">Mapa de zonas de riesgo</h1>
-
+    <div class="barra-titulo"> 
+        <h1 class="titulo">Mapa de zonas de riesgo</h1>
+    </div>
     <div class="contenedor">
         {% include 'maps/selector_riesgo.html' %}
 
