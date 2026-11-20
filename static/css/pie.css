@@ -1,0 +1,34 @@
+.pie {
+	margin-top: 40px;
+	padding: 24px;
+	background: #14437f;
+	color: white;
+	font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pie-cont {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.pie-logo img {
+	height: 48px;
+	width: auto;
+	display: block;
+	padding: 6px 10px;
+	background: white;
+	border-radius: 8px;
+}
+
+.pie-texto p {
+	margin: 0 0 4px;
+	font-size: 14px;
+}
+
+.pie-texto small {
+	font-size: 13px;
+	opacity: 0.8;
+}
